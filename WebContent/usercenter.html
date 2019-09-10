@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>LumTech-UserCenter</title>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript" src="js/cart.js" ></script>
+		<link rel="stylesheet" type="text/css" href="css/topAbot.css"/>  
+		<link rel="stylesheet" type="text/css" href="css/home1.css"/> 
+		
+		<script src="js/tools.js"></script>
+    	<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+   	 	<!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    	<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+	</head>
+	<body>
+	<script type="text/javascript">
+	$(function(){
+		
+		changeBar();
+	}
+	);
+	</script>
+		<!--导航条-->
+		<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collaplsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <div class="headerleft">
+                    	<img src="images/2.png"  alt="logo" height="50"/>                    
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html"><font color="white">HOME</font></a></li>
+                        <li><a href="news.html"><font color="white">NEWS</font></a></li>
+                        <li><a href="product.html"><font color="white">PRODUCT</font></a></li>
+						<li><a href="cart.html"><font color="white">CART</font></a></li>
+                        <li><a href="contact.html"><font color="white">CONTACT</font></a></li>
+                        <li id="userCenter"><a href="login.html"><font  color="white" id="login_btn">LOGIN</font></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+		<div class="blank">
+			
+		</div>
+		<div class="up">
+			<p> <font size="3">homepage/ personal information</font></p>
+		</div>
+		<div class="row out">
+  <div class="col-md-4">
+			<div class="list-group " style="float: left">
+                        <!--激活，作为标题-->
+                        <a href="#" class="list-group-item">
+                            Personal center
+                        </a>
+                        <a href="usercenter.html" class="list-group-item active ">My Personal center</a>
+                        <a href="changepass.html" class="list-group-item">change password</a>
+                        <a href="changeinfo.html" class="list-group-item">Modify personal information</a>
+                
+                    </div>
+			
+			</div>
+  <div class="col-md-8 center">
+	  
+	  
+	  <div class="col-md-6 center">	
+	  <img src="images/11.png" style="border-radius: 100%;" class="tu">
+	    <div class="aa">
+		   <p><font size="+2">Username</font></p>
+		  <p><font size="+1">Hello~</font></p>
+		 
+		  </div>  
+	  </div>
+	  <div class="col-md-6 center" style="margin-top: 25px">	
+	  <p>账户安全：普通</p>
+	  <p>绑定手机：178****0028</p>
+	  <p>绑定邮箱：未绑定</p>
+	  </div>
+	  
+	  
+	  <div class="middle" style="margin-top: 140px">  </div>
+	  <div class="col-md-6 " style="margin-top: 30px">	
+	   <img src="images/1112.png" style="border-radius: 100%;" class="tu">
+		 <div class="aa">
+		   <p><font >Pending order：0</font></p>
+		  <p><font>View pending order</font></p>
+		 
+		  </div>  
+	  </div>
+	  <div class="col-md-6 " style="margin-top: 30px">	
+	   <img src="images/2222.png" style="border-radius: 100%; float: left" class="tu">
+		   <div class="aa" style="float: left">
+		   <p><font>binding order: 0</font></p>
+		  <p><font>View binding order</font></p>
+		 
+		  </div>
+	  </div>
+	  <div class="col-md-6 " style="margin-top: 30px">	
+	   <img src="images/3333.png" style="border-radius: 100%;" class="tu">
+		   <div class="aa">
+		   <p><font>Unevaluated commodity</font></p>
+		  <p><font>View Unevaluated commodity</font></p>
+		 
+		  </div>
+	  </div>
+	  
+	  <div class="col-md-6 " style="margin-top: 30px">	
+	   <img src="images/4444.png" style="border-radius: 100%;" class="tu">
+		   <div class="aa">
+		   <p><font>Favorite goods</font></p>
+		  <p><font>View Favorite goods</font></p>
+		 
+		  </div>
+	  </div>
+	  
+</div>
+	 
+			</div>
+  
+
+
+		
+		
+		
+		<!--底部-->
+		<div>
+		<div>
+			<nav class="navbar navbar-default navbar-static-top">
+  				<div class="container">
+	  				<br/> 
+					<div align="center">
+   						<p class="words">
+							© 2019 LumTech. All Rights Reserved. 
+						</p>
+						<p class="words">
+							Designed By Tianyi Liu, Yibin Wei, Renchao Wu
+						</p>
+						<p class="words">
+							α prototype
+						</p>
+					</div>
+ 				 </div>
+			</nav>
+		</div>
+		</div>
+	</body>
+</html>

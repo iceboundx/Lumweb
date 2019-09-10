@@ -1,0 +1,38 @@
+@charset "utf-8";
+body{
+    background-image: url("../images/1111.png");
+	background-size:cover; 
+}
+.blank{
+	background-image: url("../images/111.png");
+	height: 200px;
+}
+.blank-word{
+	color: White;
+	position: relative;
+	font-size:60px;
+	height: 200px;
+	margin-left:10%;
+	line-height:300px;
+	font-family: sans-serif;
+}
+.middle{
+	background: rgba(255,255,255,0.00);
+	margin-left:18%;
+	margin-right:18%;
+}
+.middle_imformation{
+	margin-left: 18%;
+}
+.middle_imformation_First{
+	border-top:10px solid rgba(74,126,207,1.00);
+}
+.middle-img{
+	width:100%;
+}
+.words{
+	color: aliceblue;
+}
+.mid{
+	background-color: white;
+}

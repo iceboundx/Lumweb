@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+.we{
+	height: 40px;
+	width: 40px;
+	font-size: 5px;
+	font-family:actor;
+	color:aliceblue;
+	background:rgba(46,110,165,1.00);
+	
+}
+.font{
+	font-size: 30px;
+}
+.tu{
+	width: 150px;
+}

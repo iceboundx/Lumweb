@@ -1,0 +1,117 @@
+<!DOCTYPE html>  
+  <html lang="en">  
+  <head>  
+
+     <meta charset="UTF-8">  
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+	  	 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+     <title>LumTech-Sign Up</title>  
+     <link rel="stylesheet" type="text/css" href="css/Register.css"/>  
+     <link rel="stylesheet" type="text/css" href="css/topAbot.css"/>  
+     <link rel="stylesheet" type="text/css" href="css/toastr.css"/> 
+	 <link rel="stylesheet" type="text/css" href="css/loading.css"/>
+     <script src="js/toastr.min.js"></script>
+	 <script src="js/reg.js"></script>
+	 <script src="js/tools.js"></script>
+	 <script src="js/MD5.js"></script>
+  </head>  
+  <body>  
+	  <script type="text/javascript">
+		  toastr.options.positionClass = 'toast-center-center';
+		  putdata();
+	  </script>	
+	  		<div class="loadingajax" id="loading">
+		<div class="loadingback"></div>
+		<div class="loading">
+			 <p>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		</p>
+		</div>
+		</div>
+	  <!--导航条-->
+		<nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collaplsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="headerleft">
+                    	<img src="images/2.png"  alt="logo" height="50"/>                    
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html"><font color="white">HOME</font></a></li>
+                        <li><a href="news.html"><font color="white">NEWS</font></a></li>
+                        <li><a href="product.html"><font color="white">PRODUCT</font></a></li>
+						<li><a href="cart.html"><font color="white">CART</font></a></li>
+                        <li><a href="contact.html"><font color="white">CONTACT</font></a></li>
+                        <li><a href="login.html"><font color="white">LOGIN</font></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+      <div id="login">  
+         <h1>Register</h1>  
+         <form name="theform" action="index.html" onsubmit="javascript:regtest(this, event)">	  
+             <input type="tel" 
+					required="required" 
+					pattern="[0-9]{11}" 
+					oninvalid="setCustomValidity('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="mobile phone number" 
+					name="u"
+					id="uid"/> 
+		   	 <input type="text" 
+					required="required" 
+					pattern="[a-zA-Z0-9]{3,10}"  
+					oninvalid="setCustomValidity('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="nick name(3-10 digits or letters)" 
+					name="u"
+					id="nickname"/> 
+		   	 <input type="password" 
+					required="required" 
+					pattern="[a-zA-Z0-9]{6,12}" 
+					oninvalid = "setCustomValidity ('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="password(6-12 digits or letters)" 
+					id="passworda"
+					name="p"/>  
+             <input type="password"  
+					required="required"  
+					oninvalid="setCustomValidity('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="enter password again" 
+					id="passwordb"
+					name="p"/>  
+			 <input type="text"  
+					required="required"  
+					oninvalid="setCustomValidity('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="address" 
+					name="p"
+					id="address"/> 
+			 <input type="text"  
+					required="required" 
+					pattern="(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)"
+					oninvalid="setCustomValidity('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="Birthday(e.g. 2001-01-01)" 
+					name="p"
+					id="birthday"/>
+		 <button id="but" class="but" onclick="return true">Register</button> 
+         </form>  
+     </div>  
+ </body>  
+ </html>  

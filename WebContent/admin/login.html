@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LumWeb manager system</title>
+		  <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<link href="../css/toastr.css" rel="stylesheet" />
+		<script src="../js/toastr.min.js"></script>		
+		<script src="../js/adminlogin.js"></script> 
+		<script src="../js/admintools.js"></script> 		
+		<script src="../js/MD5.js"></script>
+    </head>
+	<body>
+	<script type="text/javascript">
+	toastr.options.positionClass = 'toast-center-center';
+	$(function(){
+		loadpage();
+	}
+	);
+	</script>
+	<div class="container">
+	<h1>LumWeb manager system</h1>
+	<br>
+	<br>
+	</div>
+		<div class="container">
+		<div class="row">
+		 <div class="col-md-6">
+		 <form name="theform"  onsubmit="javascript:logtest(this, event)">
+		  <div class="form-group">
+			<label >admin ID&nbsp&nbsp</label>
+			<input type="text" 
+					required="required" 
+					pattern="[a-zA-Z0-9]{6,12}" 
+					oninvalid="setCustomValidity('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="uid" 
+					name="u"
+					id="uid"/> 
+		  </div>
+		  <div class="form-group">
+			<label >Password</label>
+			<input type="password" 
+					required="required" 
+					pattern="[a-zA-Z0-9]{6,12}" 
+					oninvalid = "setCustomValidity ('illegal input!')" 
+					oninput="setCustomValidity('')" 
+					placeholder="password" 
+					id="password"
+					name="p"/> 
+		  </div>
+		  <button type="submit" class="btn btn-default" onclick="return true">Submit</button>
+		</form>
+		</div>
+		<div class="col-md-6">
+		<p>LumWeb system is an external information platform specially produced by LumTech research and development team.</p> 
+		<p>The platform is still in the development stage, please use it carefully.</p>
+		<br>
+		<p><strong>If you have any questions, you can consult the R&D department</strong></p>
+		</div>
+	</div>
+</body>
+</html>

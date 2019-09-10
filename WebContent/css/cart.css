@@ -1,0 +1,147 @@
+div{
+	margin: 0px;
+}
+.blank{
+	background-image:url("../images/cartblank.jpg");
+	height: 200px;
+}
+.blank-word{
+	color: White;
+	position: relative;
+	font-size:60px;
+	height: 200px;
+	margin-left:10%;
+	line-height:300px;
+	font-family: sans-serif;
+}
+body{
+	background:linear-gradient(to top,black,rgb(5,40,90)50%,rgb(28,72,137));
+}
+/*列表*/
+.list{
+	margin-left: 10%;
+	margin-right: 10%;
+	height:auto;
+	background-color: white;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	background:White;
+}
+.menu{
+	height:70px;
+	border-bottom:thick solid rgba(245,245,245,1.00);
+}
+
+.menu_small{
+	text-align: center;
+	height:70px;
+
+	width: 10%;
+	float:left;
+	padding-top: 20px;
+	font-size:20px;
+}
+.menu_mid{
+	text-align: center;
+	height:70px;
+
+	width: 20%;
+	float:left;
+	padding-top: 20px;
+	font-size:20px;
+}
+.menu_big{
+	text-align: right;
+	padding-right: 5px;
+	height:70px;
+
+	width: 40%;
+	float:left;
+	padding-top: 20px;
+	font-size:20px;
+}
+.buy{
+	background-color:#f2f2f2;
+	margin-top:20px;
+	height: 150px;
+}
+.buy_small{
+	text-align: center;
+	height:150px;
+	width: 10%;
+	float:left;
+	padding-top: 55px;
+	font-size:25px;
+
+}
+.buy_mid{
+	text-align: center;
+	height:150px;
+	width: 20%;
+	float:left;
+	padding-top: 55px;
+	font-size:25px;
+
+}
+.buy_big{
+	text-align: center;
+	height:150px;
+	width: 40%;
+	float:left;
+	font-size:25px;
+
+}
+.picture{
+	float: left;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left: 5%;
+}
+.title{
+	float:right;
+	margin-right: 5px;
+	margin-top: 55px;
+}
+/*结算栏*/
+.pay{
+   	height:54px;
+	border-top:thick solid rgba(245,245,245,1.00);
+}
+#btnOrder {	
+	margin:0px;
+	margin-top: 10px;
+	background-color:orangered;
+	height: 40px;	
+	width: 16.5%;
+	font-size: 26px;
+	float:right;
+}
+.TotalMoney{
+	height: 54px;
+	width: 15.5%;
+	float:right;
+	margin-right:2%;
+	font-size: 20px;
+	padding-top:15px;
+}
+.back_to_product{
+	height: 54px;
+	width: 15.5%;
+	float:left;
+	margin-left: 2%;
+	padding-right: 1%;
+	font-size: 15px;
+	padding-top:15px;
+}
+.howmany{
+	height: 54px;
+	width: 15.5%;
+	float:left;
+	font-size: 15px;
+	padding-top:15px;
+}
+.inputCountCss{
+	disabled:true;
+}

@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+.navbar-fixed-top{
+	background: rgba(0,0,0,0.5);
+	width:100%;
+	border-style: none;
+	/*overflow: hidden;*/
+background-size:cover;
+}
+.navbar-static-top{
+		background-color:rgba(26,87,165,1.00);
+}
+.navbar-default{
+	margin-bottom: 0px ;
+}
+.words{
+	color: aliceblue;
+}
+.navbar-collapse{
+	border-style: none;
+}
+
+	

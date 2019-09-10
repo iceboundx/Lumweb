@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background: rgba(245,245,245,1.00);
+}
+.blank{
+	height: 50px;
+}
+.up{
+	margin-left: 10%;
+}
+.out{
+	height: 500px;
+}
+.row{
+	margin-left: 10%;
+}
+.block{
+	height: 40px;
+}
+.aa{
+	
+}
+.aaa{
+	margin-top: 35px;
+	margin-left: 40px;
+}
+.bbb{
+	margin-top: 10px;
+	margin-left: 60px;
+}

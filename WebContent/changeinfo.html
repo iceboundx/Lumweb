@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>LumTech-UserCenter</title>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+		<script type="text/javascript" src="js/cart.js" ></script>
+		<link rel="stylesheet" type="text/css" href="css/topAbot.css"/>  
+		<link rel="stylesheet" type="text/css" href="css/backcg.css"/> 
+    	<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+   	 	<!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    	<!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+	</head>
+	<body>
+		
+		<!--导航条-->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collaplsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
+						<span class="sr-only" style="margin-left: 15px;">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="headerleft">
+						<img src="../images/2.png"  alt="logo" height="50"/>                    
+					</div>
+				</div>
+				<div class="collapse navbar-collapse" id="navigation">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html"><font color="white">HOME</font></a></li>
+						<li><a href="news.html"><font color="white">NEWS</font></a></li>
+						<li><a href="#"><font color="white">PRODUCT</font></a></li>
+						<li><a href="#"><font color="white">CART</font></a></li>
+						<li><a href="contact.html"><font color="white">CONTACT</font></a></li>
+						<li><a href="login.html"><font size="3" color="white">Login </font></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="blank">
+			
+		</div>
+		<div class="up">
+			<p > <font size="3">  homepage/ personal information</font></p>
+		</div>
+		<div class="row out">
+  <div class="col-md-4">
+			<div class="list-group " style="float: left">
+                        <!--激活，作为标题-->
+                        <a href="#" class="list-group-item">
+                           Personal center
+                        </a>
+                        <a href="car-个人首页.html" class="list-group-item ">My Personal center</a>
+                        <a href="car-改密码.html" class="list-group-item">change password</a>
+                        <a href="car-改个人信息.html" class="list-group-item active">Modify personal information</a>
+                
+                    </div>
+			
+			</div>
+  <div class="col-md-8 center">
+	 <div class="col-md-4 center touxiang">
+	  	<img src="images/touxiang.png" style="border-radius: 100%;" class="aa"/>
+		 <a href="#"><p class="bbb">Set Avator</p></a>
+		 </div>
+	  <div class="col-md-4 center touxiang">
+			<p><font size="+1">Basic Information</font></p>
+		  <P>name</P>
+		  <p>sex</p>
+		  <p>phone number </p>
+		  <p><font size="+1">Advanced information</font></p>
+		  <p>Place</p>
+		</div>	
+	  <div class="col-md-4 center touxiang">
+		  <div>
+		  <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#myModalchange">editor</button>
+		  </div>
+		  <div style="margin-top: 85px">
+		  <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#myModalchange">manager</button>
+		  </div>
+		 
+	  </div>
+	  </div>
+	 
+			</div>
+  
+		
+			<!-- 修改模态框Product-->
+			<div class="modal fade" id="myModalchange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					Change information
+				</h4>
+			</div>
+			 
+			<div class="row bbb">
+			    <div class="col-md-6 in" >name :</div>
+				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"  /></div>  
+			    <div class="col-md-6 in">sex :</div>
+				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div>
+				<div class="col-md-6 in">phone number :</div>
+				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div> 
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close
+				</button>
+				<button type="button" class="btn btn-primary">
+					Commit
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+		
+
+
+		
+		
+		
+		<!--底部-->
+		<div>
+		<div>
+			<nav class="navbar navbar-default navbar-static-top">
+  				<div class="container">
+	  				<br/> 
+					<div align="center">
+   						<p class="words">
+							© 2019 LumTech. All Rights Reserved. 
+						</p>
+						<p class="words">
+							Designed By Tianyi Liu, Yibin Wei, Renchao Wu
+						</p>
+						<p class="words">
+							α prototype
+						</p>
+					</div>
+ 				 </div>
+			</nav>
+		</div>
+		</div>
+	</body>
+</html>

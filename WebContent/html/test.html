@@ -1,0 +1,138 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="jquery-3.4.1.min.js"></script>
+<script src="MD5.js"></script>
+<script type="text/javascript">
+function ajaxFun()
+{
+document.getElementById("p1").innerHTML = "123234";
+		alert($("#uid").val()+"&"+hex_md5(encodeURIComponent($("#password").val())));
+  $.ajax({
+         type: "POST",  //传数据的方式
+         url: "user.do/login", //servlet地址
+		 dataType: "html",
+         data:"uid="+$("#uid").val()+"&password="+hex_md5(encodeURIComponent($("#password").val())),  //传的数据  form表单 里面的数"
+         success: function(result){       //找到输入框 并且将result的值 传进去
+			document.getElementById("p1").innerHTML = result;
+         },
+		 error: function(){
+		 alert("服务器错误");	
+		 }
+     });
+}
+function is_login()
+{
+	$.ajax({
+		   type: "GET",
+		   url: "user.do/",
+		   dataType: "json",
+		   success: function(result){
+				alert("ok");
+				$("#p1").html(result.nickname);
+			}
+		});
+}
+function testReg()
+{
+	alert("start");
+	$.ajax({
+		type: "POST",
+		url: "user.do/reg",
+		dataType: "html",
+		data:'{uid:"6666666",password:"58d34c42c81f19094fa6a847a26bfb78",birthday:"2010-09-01",address:"bupt"}',
+		success: function(result){
+				alert(result);
+			}
+		});
+}
+function testExit()
+{
+	alert("start exit");
+	$.ajax({
+		type: "POST",
+		url: "user.do/exit",
+		dataType: "html",
+		success: function(result){
+				alert(result);
+			}
+		});
+}
+function testUpdate()
+{
+	alert("start update");
+	$.ajax({
+		type: "POST",
+		url: "user.do/update",
+		dataType: "html",
+		data:'{nickname:"qq",birthday:"1998-01-24",address:"bupt"}',
+		success: function(result){
+				alert(result);
+			}
+		});
+}
+function testChangepass()
+{
+	alert("start pass");
+	$.ajax({
+		type: "POST",
+		url: "user.do/changepass",
+		dataType: "html",
+		data:'oldpassword='+hex_md5(encodeURIComponent("19990824lty"))+'&newpassword='+hex_md5(encodeURIComponent($("#password").val())),
+		success: function(result){
+				alert(result);
+				testExit();
+			}
+		});
+}
+</script>
+<script>
+xmlHttp=null;
+if (window.XMLHttpRequest)
+  {// code for IE7, Firefox, Opera, etc.
+  xmlHttp=new XMLHttpRequest();
+  }
+else if (window.ActiveXObject)
+  {// code for IE6, IE5
+  xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+if (xmlHttp!=null)
+  {
+  xmlHttp.open("GET", "user.do/islogin", false);
+  xmlHttp.send(null);
+  xmlDoc=xmlHttp.responseText;
+  if(xmlDoc=="yes")
+  alert("yes");
+  else alert("No");
+  }
+  else
+  {
+  alert("Your browser does not support XMLHTTP.");
+  }
+ </script>
+<title>Insert title here</title>
+
+</head>
+<body>
+<H1 align="center">请输入两个字符串</H1>
+<div align="center">
+<button type="button" onclick="testReg()">testReg</button>
+<button type="button" onclick="testExit()">testExit</button>
+<button type="button" onclick="testUpdate()">testUpdate</button>
+<button type="button" onclick="testChangepass()">changepass</button>
+<form id="form">
+        first:<input type="text" name="uid" id="uid">
+        second:<input type="password" name="password" id="password">
+        <button type="button" onclick="ajaxFun()">button</button> //提交 按钮
+    </form>
+    <input type="text" id="result">  // 用来 显示 result
+    </div>
+<div align="center">
+<p id="p1">
+testetewtetet
+</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+@charset "utf-8";
+.blank{
+	background-image:url("../images/newsblank.jpg");
+	height: 200px;
+}
+.blank-word{
+	color: White;
+	position: relative;
+	font-size:60px;
+	height: 200px;
+	margin-left:10%;
+	line-height:300px;
+	font-family: sans-serif;
+}
+.typeactive
+{
+	background-color:White;
+}
+body{
+	   background:linear-gradient(to top,black,rgb(5,40,90)50%,rgb(28,72,137));
+}
+
+#list {
+   margin-top:3%;
+   margin-left:8%;
+   margin-right:8%;
+   margin-bottom:2%;
+   padding-bottom:7%;
+   background:#f2f2f2;
+   border:1px solid #5599bb;
+	min-height:460px;
+}
+#left {
+   width:210px;
+   height:460px;
+   margin-top:15px;
+   margin-left:10px;
+   margin-bottom:5px;
+   padding-right:2%;
+   float:left;
+   border-right:1px dotted #5599bb;
+}
+.title {
+   width:165px;
+   height:30px;
+   line-height:30px;
+   font-size:14px;
+   font-weight:bold;
+   color:#FFF;
+   padding-left:30px;
+   display:block;
+   background:#35a1eb;
+}
+.left { 
+   width:200px;
+   min-height:420px;
+}
+.left ul {
+   width:200px;
+   height:420px;
+	padding: 0px;
+}
+.left li {
+   width:185px;
+   margin-top:5px;
+   height:30px;
+   line-height:30px;
+   text-align:center;
+   font-weight:bold;
+   list-style-type:none;
+   font-size:14.5px;
+}
+.left a {
+   text-decoration:none;
+   width:193px;
+   height:29px;
+   display:block;
+   color:#000;
+}
+.left li:hover{
+   background-color:White;
+}
+.pagination{
+	padding-top:3%;
+}
+#right {
+   width:735px;
+   min-height:460px;
+   float:right;
+   margin-top:15px;
+   margin-bottom:5px;
+   padding-right:5%;
+	
+}
+#news {
+   width:730px;
+   height:430px;
+   float:left;
+}
+.sub {
+   width:685px;
+   height:28px;
+   line-height:30px;
+   font-size:14px;
+   color:#5599BB;
+   font-weight:bold;
+   padding-left:25px;
+   margin-left:10px;
+   display:block;
+   border-bottom:2px solid #5599BB;
+}
+.sub a {
+   text-decoration:none;
+   color:#000;
+}
+.sub a:hover {
+   color:#5599BB;
+}
+#nn {
+   width:730px;
+   height:400px;
+}
+#nn ul {
+   width:670px;
+   height:400px;
+   margin-left:30px; 
+   margin-top:25px;
+   padding: 0px;
+}
+#nn ul li {
+   margin-top: 10px;
+   padding-top:2px;
+   margin-right:5px;
+   width:650px;
+   height:30px;
+   font-size: 18.5px;
+   font-family:"Avantgarde";
+   overflow:hidden;
+   list-style-type:none;
+   border-bottom:1px dashed #5599BB;
+}
+#nn a {
+   text-decoration:none;
+   color:#000;
+   padding-left:25px;
+   width:640px;
+   height:30px;
+   display:block;  
+}
+#nn a:hover {
+   color:#5599BB;
+}
+.time {
+   float:right;
+}
+.page {
+   text-align:center;
+   width:730px;
+   height:25px;
+   line-height:25px;
+}
+
+
+
+
+.pagination{
+	margin-top:0;
+	margin-right: auto;
+	margin-left: auto;
+}
+

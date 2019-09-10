@@ -1,0 +1,144 @@
+@charset "utf-8";
+body{
+	background:linear-gradient(to top,black,rgb(5,40,90)50%,rgb(28,72,137));
+}
+.blank{
+	background-image:url("../images/productblank.png");
+	height: 200px;
+}
+.proimg{
+	margin-left:2%;
+	margin-top:3%;
+}
+.blank-word{
+	color: White;
+	position: relative;
+	font-size:60px;
+	height: 200px;
+	margin-left:10%;
+	line-height:300px;
+	font-family: sans-serif;
+}
+.middle{
+	margin-left:3%;
+	margin-right:3%;
+	background: rgba(255,255,255,0.00);
+}
+.middle_imformation{
+	margin-left: 18%;
+}
+
+.middle-img{
+	width:100%;
+}
+.words{
+	color: aliceblue;
+}
+
+#daohang{
+	background:rgba(164,164,164,1.00);
+	height:50px;
+	width: 100%;
+}
+#left{
+	height: 250px;
+	width: 45%;
+}
+#right{
+	margin-left: 5%;
+	
+}
+#proimg {
+	height:300px;
+	width: 300px;
+}
+#bigimg{
+	height:600px;
+	width:100%;
+}
+.buy {
+	margin-top: 5%;
+	padding-top: 3%;
+	padding-bottom: 2%;
+	padding-left:2%;
+	padding-right:2%;
+}
+.stock {
+	margin-top:2%;
+	float:left;
+	font-size:23px;
+	font-family:sans-serif;
+}
+.buybtn {
+	text-align: right;
+	margin-right:3%;
+}
+.details {
+	margin-top:6%;
+	margin-bottom:2%;
+}
+.detailimg{
+	border-top:2px solid #dcdcdc;
+	padding-top:2%;
+	padding-bottom:3%;
+}
+.property {
+    border-top: 2px solid #dcdcdc;
+	border-bottom: 2px solid #dcdcdc;
+    padding-top: 2%;
+	padding-bottom: 2%;
+	margin-top:2%;
+}
+.title {
+	font-size:39px;
+	font-family:sans-serif;
+}
+.desc {
+	font-size:18px;
+	font-weight:400;
+	font-family:Microsoft YaHei;
+	color:rgb(95, 108, 136);
+}
+.word{
+	align-items: center;
+	font-family: system-ui;
+	font-size: 20px;
+}
+.price {
+	font-size:39px;
+	font-family:sans-serif;
+	color:#0d00be;
+	font-weight:700;
+	text-align:right;
+	padding-right:10%;
+	background-color: #e1e1e130;
+}
+.pri {
+	position: relative;
+	margin-top:3.2%;
+	font-family:MicrosoftJhengHei;
+	font-size:19px;
+	color:#0d00be;
+	font-weight:400;
+	padding-left:5%;
+	text-align:left;
+	float:left;
+}
+#back{
+	padding-top:2%;
+	margin-top:2%;
+	background:#f2f2f2;
+}
+#shangpin{
+	font-family: Microsoft YaHei;
+	font-size: 27px
+}
+#pri{
+	background:rgba(206,206,206,1.00);
+	color: aliceblue;
+}
+#little{
+	color: darkgray;
+	font-size: 10px;
+}
+

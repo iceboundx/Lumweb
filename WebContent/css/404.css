@@ -1,0 +1,28 @@
+/* CSS Document */
+body{
+	background-color:#5B5B5B;
+}
+
+.btn-primary{
+	margin-top:1%;
+	
+	margin-bottom:2%;
+}
+
+.tab-h2 {
+color:#E0E0E0;
+font-size:100px;
+font-family: Microsoft Yahei;
+letter-spacing: 2px;
+text-align:center;
+margin:45px 0 10px;
+}
+
+.tab-p {
+font-size: 35px;
+letter-spacing: 1px;
+font-family: Microsoft Yahei;
+text-align:center;
+color: #999;
+margin:15px 0 45px;
+}

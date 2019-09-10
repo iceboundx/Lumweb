@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+.we{
+	height: 40px;
+	width: 40px;
+	font-size: 5px;
+	font-family:actor;
+	color:aliceblue;
+	background:rgba(46,110,165,1.00);
+	
+}
+.row-pro {
+	margin-bottom:3%;
+}
+.font{
+	font-size: 24px;
+}
+.tu{
+	width: 150px;
+	
+	
+}
+.proname {
+	text-align:left;
+}
+.proid{
+	margin: 0px 200px 200px 0;
+}
+.in{
+	margin-bottom: 5px;
+}
+.eg{
+	
+	width: 100px;
+	height: 100px;
+}
+.eg1{
+	width: 100px;
+	height: 100px;
+	
+}
+.aaa{
+ float:right;
+	margin-right:5px;
+}
+.bbb{
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
