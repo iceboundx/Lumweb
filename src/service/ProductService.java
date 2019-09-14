@@ -19,4 +19,6 @@ public interface ProductService {
 	public boolean changeCart(Cart cart);
 	public boolean decCart(String pid, String uid);
 	public boolean delCartItem(String pid, String uid);
+	public Cart payCart(ArrayList<String> payList, Cart cart);
+	public boolean payCartok(ArrayList<String> payList, Cart cart);
 }

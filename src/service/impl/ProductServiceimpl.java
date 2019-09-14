@@ -128,4 +128,29 @@ public class ProductServiceimpl implements ProductService {
 		return flag;
 	}
 
+	@Override
+	public Cart payCart(ArrayList<String> payList, Cart cart) {
+		Map<String, CartItem> cartContent=cart.getCartContent();
+		Map<String, CartItem> newContent=new HashMap<String,CartItem>();
+		for(String id:payList) {
+			CartItem it=cartContent.get(id);
+			newContent.put(id, it);
+		}
+		Cart ret=new Cart();
+		ret.setCartContent(newContent);
+		ret.setUid(cart.getUid());
+		return ret;
+	}
+	
+	@Override
+	public boolean payCartok(ArrayList<String> payList, Cart cart) {
+		Map<String, CartItem> cartContent=cart.getCartContent();
+		for(String id:payList) {
+			CartItem it=cartContent.get(id);
+			boolean res=delCartItem(it.getPid(), cart.getUid());
+			if(res==false)return false;
+		}
+		return true;
+	}
+
 }

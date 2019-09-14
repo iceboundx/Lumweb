@@ -1,13 +1,21 @@
 package web;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.alibaba.fastjson.JSON;
 
@@ -107,7 +115,48 @@ public class ManagerServlet extends HttpServlet {
 			Article article=(Article)JSON.parseObject(req,Article.class);
 			if(artService.changeArt(article))response.getWriter().print(WebUtils.getRes("yes"));
 			else response.getWriter().print(WebUtils.getRes("no"));
-		} else
+		}
+		else if(cmd.equals("/manager.do/upload")) {
+			System.out.println("upload");
+	        DiskFileItemFactory factory=new DiskFileItemFactory();
+	        //factory.setRepository(new File("‪D:"));
+	        ServletFileUpload upload=new ServletFileUpload(factory);
+	        upload.setSizeMax(20*1024*1024);
+	        upload.setFileSizeMax(20*1024*1024);
+	        upload.setHeaderEncoding("UTF-8");
+	        try {
+	            List<FileItem> itemList=upload.parseRequest(request);
+	            for(FileItem item:itemList){
+	                if(item.isFormField()){
+	                    String name=item.getFieldName();
+	                    String value=item.getString("UTF-8");
+	                    System.out.println("name="+name+"  value="+value);
+	                }else{
+	                    String fileName=item.getName();
+	                    System.out.println(fileName);
+	                    String namede=item.getFieldName();
+	                    System.out.println(namede);
+	                    
+	                    InputStream is=item.getInputStream();
+	                    FileOutputStream fos=new FileOutputStream("d:/file/"+fileName);
+	                    byte[] buff=new byte[1024*1024];
+	                    int len=0;
+	                    while((len=is.read(buff))>0){
+	                        fos.write(buff);
+	                    }
+	                    is.close();
+	                    fos.close();
+	                }
+	            }
+	            response.getWriter().print(WebUtils.getRes("yes"));
+	            return;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        response.getWriter().print(WebUtils.getRes("error"));
+	        return;
+		}
+		else
 		{
 			HttpSession session=request.getSession();
 			String per=(String)session.getAttribute("permission");
@@ -181,6 +230,23 @@ public class ManagerServlet extends HttpServlet {
 			Product pro=proService.getProduct(pid);
 			response.getWriter().print(JSON.toJSONString(pro));
 		}
+		else if(cmd.equals("/manager.do/article/num")) {
+			String type=request.getParameter("type");
+			response.getWriter().print(WebUtils.getRes(artService.getTotalNum(type)));
+		}
+		else if(cmd.equals("/manager.do/article/list")) {
+			String type=request.getParameter("type");
+			int p=Integer.parseInt(request.getParameter("page"));
+			int num=Integer.parseInt(request.getParameter("num"));
+			ArrayList<Article> al=artService.getList(type, (p-1)*num, p*num-1);
+			response.getWriter().print(JSON.toJSONString(al));
+		}
+		else if(cmd.equals("/manager.do/article/detail")) {
+			String id=request.getParameter("id");
+			Article ar=artService.getContent(id);
+			if(ar==null)response.getWriter().print(WebUtils.getRes("no"));
+			response.getWriter().print(JSON.toJSONString(ar));
+		}
 		else if(cmd.equals("/manager.do/num")) {
 			response.getWriter().print(WebUtils.getRes(manService.getTotalNum()));
 		}
@@ -193,6 +259,17 @@ public class ManagerServlet extends HttpServlet {
 				man.setPasswordsalt(null);
 			}
 			response.getWriter().print(JSON.toJSONString(ml));
+		}
+		else if(cmd.equals("/manager.do/file")) {
+			ArrayList<String>filelist=new ArrayList();
+			String path = "d:/file/";		//要遍历的路径
+			File file = new File(path);		//获取其file对象
+			File[] fs = file.listFiles();	//遍历path下的文件和目录，放在File数组中
+			for(File f:fs){					//遍历File[]数组
+				if(!f.isDirectory())		//若非目录(即文件)，则打印
+					filelist.add(f.getName());
+			}
+			response.getWriter().print(JSON.toJSONString(filelist));
 		}
 		else response.sendError(404);
 	}

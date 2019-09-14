@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 import domain.Cart;
 import domain.CartItem;
 import domain.Product;
 import domain.User;
+import service.OrderService;
 import service.ProductService;
 import service.UserService;
+import service.impl.OrderServiceimpl;
 import service.impl.ProductServiceimpl;
 import service.impl.UserServiceimpl;
 import utils.WebUtils;
@@ -24,6 +27,7 @@ import utils.WebUtils;
 public class CartServlet extends HttpServlet {
 	UserService userService=new UserServiceimpl();
 	ProductService proService=new ProductServiceimpl();
+	OrderService ordService=new OrderServiceimpl();
 	public void doPost(HttpServletRequest request,HttpServletResponse response)
 			throws IOException,ServletException {
 		String cmd=WebUtils.getCmd(request);
@@ -88,6 +92,28 @@ public class CartServlet extends HttpServlet {
 				return;
 			}
 			proService.clearCart(uid);
+		}
+		else if(cmd.equals("/cart.do/pay")) {
+			HttpSession session=request.getSession();
+			String uid=(String)session.getAttribute("uid");
+			if(uid==null) {
+				
+				response.getWriter().print(WebUtils.getRes("nologin"));
+				return;
+			}
+			String payString=WebUtils.getBody(request);
+			ArrayList<String> payList=(ArrayList<String>)JSON.parseArray(payString,String.class);
+			Cart orderCart=proService.payCart(payList, proService.getCart(uid));
+			String oid=ordService.makeOrder(orderCart);
+			if(oid!=null) {
+				proService.payCartok(payList, proService.getCart(uid));
+				JSONObject UserJson=new JSONObject();
+				UserJson.put("orderid", oid);
+				response.getWriter().print(UserJson.toJSONString());
+			}
+			else
+				response.getWriter().print(WebUtils.getRes("stock error"));
+			return;
 		}
 		else response.sendError(404);
 	}

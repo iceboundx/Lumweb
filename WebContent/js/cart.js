@@ -134,6 +134,43 @@ function getTotalprice()
 	});
 	$("#priceTotal").text(all.toFixed(2));
 }
+function confirm()
+{
+	var ret = new Array()
+	var isok = 0;
+	$(".buy").each(function(i){
+		if($(this).find("input[name='cc']").prop("checked")==true)
+		{
+			var nowid=$(this).attr('id');
+			ret.push(nowid.substr(3));
+			isok=1;
+		}
+	});
+	if(isok==0){
+		toastr.warning("You choose no products!");
+		return;
+	}
+	startLoad();
+	$.ajax({
+        type: "POST",
+        url: "cart.do/pay",
+		dataType: "json",
+		data:JSON.stringify(ret),
+        success: function(result){
+			loadpage();
+			if(result.result=="stock error"){
+				alert("stock error");
+			}
+			else
+			{
+				alert(result.orderid);
+			}
+         },
+         error: function(){
+            toastr.error("server error");
+         }
+     });
+}
 function getcart()
 {
 	$.ajax({
