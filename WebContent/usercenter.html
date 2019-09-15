@@ -11,9 +11,11 @@
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 		<script type="text/javascript" src="js/cart.js" ></script>
 		<link rel="stylesheet" type="text/css" href="css/topAbot.css"/>  
-		<link rel="stylesheet" type="text/css" href="css/home1.css"/> 
-		
+		<link rel="stylesheet" type="text/css" href="css/backcg.css"/> 
+		<link href="css/toastr.css" rel="stylesheet" />
+		<script src="js/toastr.min.js"></script>
 		<script src="js/tools.js"></script>
+		<script src="js/MD5.js"></script>
     	<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
    	 	<!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     	<!--[if lt IE 9]>
@@ -24,7 +26,14 @@
 	<body>
 	<script type="text/javascript">
 	$(function(){
-		
+		startLoad();
+		if(!is_login())
+		{
+			toastr.warning("You have to login first! Will go to the login page in 2s...");
+			jump("login.html",2200);
+			return;
+		}
+		endLoad();
 		changeBar();
 	}
 	);
@@ -61,72 +70,67 @@
 			
 		</div>
 		<div class="up">
-			<p> <font size="3">homepage/ personal information</font></p>
+			<p> <font size="6">Homepage & Personal Information</font></p>
 		</div>
 		<div class="row out">
-  <div class="col-md-4">
+  <div class="col-md-2">
 			<div class="list-group " style="float: left">
-                        <!--激活，作为标题-->
-                        <a href="#" class="list-group-item">
-                            Personal center
-                        </a>
-                        <a href="usercenter.html" class="list-group-item active ">My Personal center</a>
-                        <a href="changepass.html" class="list-group-item">change password</a>
-                        <a href="changeinfo.html" class="list-group-item">Modify personal information</a>
-                
+                        <!--激活，作为标题-->	
+                        <a href="usercenter.html" class="list-group-item active ">My Personal Center</a>
+                        <a href="changepass.html" class="list-group-item">Modify Password</a>
+                        <a href="changeinfo.html" class="list-group-item">Modify Personal Information</a>
+						<a href="order.html" class="list-group-item">Order Center</a>
                     </div>
 			
 			</div>
   <div class="col-md-8 center">
 	  
 	  
-	  <div class="col-md-6 center">	
-	  <img src="images/11.png" style="border-radius: 100%;" class="tu">
-	    <div class="aa">
+	  <div class="col-md-6 center" style="margin-top: 3%">	
+	  <img src="images/555.jpeg" style="border-radius: 100%;" class="tu">
+	    <div class="aaa">
 		   <p><font size="+2">Username</font></p>
 		  <p><font size="+1">Hello~</font></p>
 		 
 		  </div>  
 	  </div>
-	  <div class="col-md-6 center" style="margin-top: 25px">	
-	  <p>账户安全：普通</p>
-	  <p>绑定手机：178****0028</p>
-	  <p>绑定邮箱：未绑定</p>
+	  <div class="col-md-6 center" style="margin-top: 5%">	
+	  <p>Account Security:normal</p>
+	  <p>TEL：178****0028</p>
+	  <p>Email：not bound</p>
 	  </div>
 	  
 	  
 	  <div class="middle" style="margin-top: 140px">  </div>
 	  <div class="col-md-6 " style="margin-top: 30px">	
-	   <img src="images/1112.png" style="border-radius: 100%;" class="tu">
+		  <a href="changepass.html">  <img  src="images/1112.png" style="border-radius: 100%;" class="tu"></a>
 		 <div class="aa">
-		   <p><font >Pending order：0</font></p>
-		  <p><font>View pending order</font></p>
-		 
+			 <a href="changepass.html"><p><font size="4" >Modify Password</font></p></a>
+
 		  </div>  
 	  </div>
 	  <div class="col-md-6 " style="margin-top: 30px">	
-	   <img src="images/2222.png" style="border-radius: 100%; float: left" class="tu">
-		   <div class="aa" style="float: left">
-		   <p><font>binding order: 0</font></p>
-		  <p><font>View binding order</font></p>
+			<a href="changepass.html"><img src="images/3333.png" style="border-radius: 100%;" class="tu"></a>
 		 
+		   <div class="aa" style="float: left">
+		  <a href="changepass.html"><p><font size="4">Modify Personal Information</font></p></a>
+
 		  </div>
 	  </div>
 	  <div class="col-md-6 " style="margin-top: 30px">	
-	   <img src="images/3333.png" style="border-radius: 100%;" class="tu">
+	   
+		   <a href="order.html"><img src="images/2222.png" style="border-radius: 100%;" class="tu"></a>
 		   <div class="aa">
-		   <p><font>Unevaluated commodity</font></p>
-		  <p><font>View Unevaluated commodity</font></p>
-		 
+		    <a href="order.html"><p><font size="4">Order Center</font></p></a>
+
 		  </div>
 	  </div>
 	  
 	  <div class="col-md-6 " style="margin-top: 30px">	
-	   <img src="images/4444.png" style="border-radius: 100%;" class="tu">
+	   <a href="cart.html"><img src="images/4444.png" style="border-radius: 100%;" class="tu"></a>
 		   <div class="aa">
-		   <p><font>Favorite goods</font></p>
-		  <p><font>View Favorite goods</font></p>
-		 
+		 <a href="cart.html"><p><font size="4">My Cart</font></p></a>
+
 		  </div>
 	  </div>
 	  

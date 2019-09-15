@@ -5,18 +5,19 @@
 	margin-left:1%;
 	height: 50%;
 	width: 70px;
-	font-size: 5px;
+	font-size: 8px;
 	font-family:actor;
 }
 .mg{
 	margin-bottom:1%;
 }
 .font{
-	font-size: 15px;
+	font-size: 20px;
 }
 .tu{
 	width: 150px;
 }
-.ln{
-	line-height: 30px;
+.in{
+	margin-bottom: 5px;
+	margin-top: 2px;
 }

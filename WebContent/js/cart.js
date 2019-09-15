@@ -159,11 +159,12 @@ function confirm()
         success: function(result){
 			loadpage();
 			if(result.result=="stock error"){
-				alert("stock error");
+				toastr.warning("No enough stock for your products!");
 			}
 			else
 			{
-				alert(result.orderid);
+				toastr.success("Your order has been saved! Will go to the Order Center in 2s...");
+				jump("order.html",2200);		
 			}
          },
          error: function(){

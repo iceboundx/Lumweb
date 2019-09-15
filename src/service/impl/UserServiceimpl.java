@@ -18,6 +18,7 @@ public class UserServiceimpl implements UserService {
 		if(nowUser==null)return false;
 		String pass=new MD5utils(userPassword+nowUser.getPasswordSalt()).get32();
 		System.out.println(pass);
+		System.out.println(nowUser.getPasswordSalt());
 		if(pass.equals(nowUser.getPassword()))return true;
 		return false;
 	}
@@ -55,7 +56,39 @@ public class UserServiceimpl implements UserService {
 		User oldInfo=userDao.getUser(uid);
 		oldInfo.setPassword(newPassword);
 		userDao.delUser(oldInfo.getUid());
-		this.UserReg(oldInfo);
+		String rawPassword=oldInfo.getPassword();
+		String salt="";
+		for(int i=0;i<6;i++) {
+			int intVal=(int)(Math.random()*26+97);
+			salt=salt+(char)intVal;
+		}
+		oldInfo.setPasswordSalt(salt);
+		String pass=new MD5utils(rawPassword+oldInfo.getPasswordSalt()).get32();
+		oldInfo.setPassword(pass);
+		userDao.addUser(oldInfo);
+		System.out.println("change");
+		return true;
+	}
+	
+	@Override
+	public boolean manChangePass(String uid, String newPassword) {
+		System.out.println(newPassword);
+		User oldInfo=userDao.getUser(uid);
+		oldInfo.setPassword(newPassword);
+		System.out.println(oldInfo.getUid());
+		userDao.delUser(oldInfo.getUid());
+		String rawPassword=oldInfo.getPassword();
+		System.out.println(rawPassword);
+		String salt="";
+		for(int i=0;i<6;i++) {
+			int intVal=(int)(Math.random()*26+97);
+			salt=salt+(char)intVal;
+		}
+		oldInfo.setPasswordSalt(salt);
+		String pass=new MD5utils(rawPassword+oldInfo.getPasswordSalt()).get32();
+		oldInfo.setPassword(pass);
+		userDao.addUser(oldInfo);
+		System.out.println(oldInfo.getPassword()+" "+oldInfo.getPasswordSalt());
 		System.out.println("change");
 		return true;
 	}

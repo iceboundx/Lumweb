@@ -4,16 +4,25 @@ body{
 	background: rgba(245,245,245,1.00);
 }
 .blank{
-	height: 50px;
+	height: 100px;
+}
+.list-group{
+	background: rgba(245,245,245,1.00);
+	margin-top: 5%;
 }
 .up{
 	margin-left: 10%;
+	height: 50px;
+	margin-bottom: 2%;
 }
 .out{
-	height: 500px;
+	height: 650px;
+	background: white;
 }
 .row{
 	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
 }
 .block{
 	height: 40px;
@@ -28,4 +37,22 @@ body{
 .bbb{
 	margin-top: 10px;
 	margin-left: 60px;
+}
+.center{
+	height: 100px;
+}
+.tu{
+	height:100px;
+	float: left;
+	
+}
+.middle{
+	border-top: 3px solid rgba(74,126,207,1.00);
+	margin-bottom: 5%;
+}
+.bbbb{
+	float:left;
+	margin-left: 10px;
+	margin-top: 20px;	
+	vertical-align: middle;
 }

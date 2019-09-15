@@ -84,7 +84,6 @@ public class UserServlet extends HttpServlet {
 					response.getWriter().print(WebUtils.getRes("nouser"));
 				}
 				else {
-		
 					user.setUid(uid);
 					if(userService.ChangeInfo(user))response.getWriter().print(WebUtils.getRes("yes"));
 					else response.getWriter().print(WebUtils.getRes("no"));

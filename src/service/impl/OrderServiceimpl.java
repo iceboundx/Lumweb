@@ -49,7 +49,7 @@ public class OrderServiceimpl implements OrderService {
 			Product pr=proDao.getProduct(cit.getPid());
 			double price=(double)cit.getQuantity()*pr.getPrice();
 			allprice+=price;
-			it.setPrice(price);
+			it.setPrice(pr.getPrice());
 			it.setName(pr.getName());
 			orderitems.add(it);
 		}

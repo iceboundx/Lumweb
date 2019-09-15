@@ -6,18 +6,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>LumWeb manager system</title>
-		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/adminuser.css"/>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/homearticle.css"/>
-		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
-		<script src="../js/bootstrap-paginator.min.js"></script>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+		<script src="../js/bootstrap-paginator.min.js"></script>
+		<link href="../css/toastr.css" rel="stylesheet" />
+		<script src="../js/toastr.min.js"></script>		
+		<script src="../js/adminuser.js"></script> 
+		<script src="../js/admintools.js"></script> 	
+		<script src="../js/MD5.js"></script> 	
     </head>
     <style type="text/css">
         body {
@@ -39,9 +38,14 @@
 
         .search .toolbar {}
     </style>
-
+	<script type="text/javascript">
+	toastr.options.positionClass = 'toast-center-center';
+	$(function(){
+		loadpage();
+	}
+	);
+	</script>
     <body>
-		<ul class="pagination"></ul>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -90,14 +94,17 @@
                             <li class="active">Users</li>
                         </ol>
                     </div>
-                    
-                    <div class="row" id="001">
+				<button type="button" onclick="putchange()" class="btn btn-default" data-toggle="modal" data-target="#myModalchange">
+				Add user
+				</button>
+                   <div id="usr">
+                    <div class="row mg" id="001">
   		<div class="col-md-9 font">
 						<span class="artid">user001</span>
 						</div>
   			<div class="col-md-3">
-				<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalchange">change</button>
-				<button type="button" class="btn btn-primary " data-toggle="modal" >delete</button>
+				<button type="button" class="btn btn-primary we" data-toggle="modal" data-target="#myModalchange">change</button>
+				<button type="button" class="btn btn-primary we" data-toggle="modal" >delete</button>
 				</div> </div>
 					 <div class="row" id="002">
   		<div class="col-md-9 font">
@@ -131,7 +138,7 @@
 				<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalchange">change</button>
 				<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModaldelete">delete</button>
 						 </div> </div>
-					
+					</div>
 					
  		
 						
@@ -139,25 +146,10 @@
 					
 					<div class="row" align="center">
 						<div class="col-md-12">
-						<nav aria-label="Page navigation">
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
+											<div class="row" align="center">
+						<div class="col-md-12">
+						  <ul class="pagination">
   </ul>
-</nav>
 							<!-- 修改模态框Product-->
 			<div class="modal fade" id="myModalchange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -172,14 +164,16 @@
 			</div>
 			 
 			<div class="row">
-			    <div class="col-md-6 in" >User name  :</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"  /></div>  
+				<div class="col-md-6 in"  >UserID  :</div>
+				 <div class="col-md-6 in"><input type="text"  placeholder="" name="u"  disabled="" id="modal-id"/></div>  
+			    <div class="col-md-6 in" >Nick name  :</div>
+				 <div class="col-md-6 in"><input type="text"  placeholder="" name="u"  id="modal-nick"/></div>  
 			    <div class="col-md-6 in">Password  ：</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div>
-				<div class="col-md-6 in">Gender ：</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div>
-				<div class="col-md-6 in">Birthday ：</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div>
+				 <div class="col-md-6 in" ><input type="text"  placeholder="" name="u" id="modal-password"/></div>
+				<div class="col-md-6 in">Address ：</div>
+				 <div class="col-md-6 in"><input type="text"  placeholder="" name="u" id="modal-address"/></div>
+				<div class="col-md-6 in" >Birthday ：</div>
+				 <div class="col-md-6 in"><input type="text" id="modal-birth" placeholder="" name="u"/></div>
 				
 				
 			</div>
@@ -187,7 +181,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">close
 				</button>
-				<button type="button" class="btn btn-primary">
+				<button type="button" class="btn btn-primary" onclick="confirm()">
 					commit change
 				</button>
 			</div>
@@ -202,6 +196,7 @@
 						</div>
 					</div>
             </div>
+			</div>
             <div class="row">
                 <div class="col-md-12">
                     <div align="center" style="padding-top: 200px">
@@ -210,7 +205,7 @@
                 </div>
             </div>
         </div>
-			
+		
     </body>
 		
 </html>

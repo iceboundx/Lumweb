@@ -16,6 +16,7 @@ public class ManagerServiceimpl implements ManagerService {
 		Manager nowMan=managerDao.getMan(uid);
 		if(nowMan==null)return false;
 		String pass=new MD5utils(password+nowMan.getPasswordsalt()).get32();
+		System.out.println(pass);
 		if(pass.equals(nowMan.getPassword()))return true;
 		return false;
 	}

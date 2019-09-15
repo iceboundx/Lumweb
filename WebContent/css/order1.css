@@ -15,14 +15,12 @@ body{
 	height: 50px;
 	margin-bottom: 2%;
 }
-.out{
-	height: 650px;
-	background: white;
-}
-.row{
+.out{	
+	min-height: 650px;
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-bottom: 5%;
+	background: white;
 }
 .tu{
 	height:100px;
@@ -32,9 +30,7 @@ body{
 .middle{
 	border-top: 3px solid rgba(74,126,207,1.00);
 }
-.center{
-	height: 100px;
-}
+
 .aa{
 	float:left;
 	margin-left: 10px;
@@ -49,4 +45,7 @@ body{
 }
 .col-md-8 center{
 	margin-top: 20%;
+}
+.cc{
+	background-color: rgba(245,245,245,1.00);
 }

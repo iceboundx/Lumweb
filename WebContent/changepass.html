@@ -9,9 +9,13 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
     	<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-		<script type="text/javascript" src="js/cart.js" ></script>
+		<script type="text/javascript" src="js/changepass.js" ></script>
 		<link rel="stylesheet" type="text/css" href="css/topAbot.css"/>  
 		<link rel="stylesheet" type="text/css" href="css/backcg.css"/> 
+		<link href="css/toastr.css" rel="stylesheet" />
+		<script src="js/toastr.min.js"></script>
+		<script src="js/tools.js"></script>
+		<script src="js/MD5.js"></script>
     	<!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
    	 	<!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
     	<!--[if lt IE 9]>
@@ -19,78 +23,97 @@
         <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
         <![endif]-->
 	</head>
+	<script type="text/javascript">
+	toastr.options.positionClass = 'toast-center-center';
+	$(function(){
+		changeBar();
+		loadpage();
+		}
+	);
+	</script>
 	<body>
 		
 		<!--导航条-->
 		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collaplsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
-						<span class="sr-only" style="margin-left: 15px;">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="headerleft">
-						<img src="../images/2.png"  alt="logo" height="50"/>                    
-					</div>
-				</div>
-				<div class="collapse navbar-collapse" id="navigation">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.html"><font color="white">HOME</font></a></li>
-						<li><a href="news.html"><font color="white">NEWS</font></a></li>
-						<li><a href="#"><font color="white">PRODUCT</font></a></li>
-						<li><a href="#"><font color="white">CART</font></a></li>
-						<li><a href="contact.html"><font color="white">CONTACT</font></a></li>
-						<li><a href="login.html"><font size="3" color="white">Login </font></a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collaplsed" data-toggle="collapse" data-target="#navigation" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <div class="headerleft">
+                    	<img src="images/2.png"  alt="logo" height="50"/>                    
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navigation">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="index.html"><font color="white">HOME</font></a></li>
+                        <li><a href="news.html"><font color="white">NEWS</font></a></li>
+                        <li><a href="product.html"><font color="white">PRODUCT</font></a></li>
+						<li><a href="cart.html"><font color="white">CART</font></a></li>
+                        <li><a href="contact.html"><font color="white">CONTACT</font></a></li>
+                        <li id="userCenter"><a href="login.html"><font  color="white" id="login_btn">LOGIN</font></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 		<div class="blank">
 			
 		</div>
 		<div class="up">
-			<p > <font size="3">homepage/ personal information</font></p>
+			<p> <font size="6">Homepage & Personal Information</font></p>
 		</div>
 		<div class="row out">
-  <div class="col-md-4">
+   <div class="col-md-2">
 			<div class="list-group " style="float: left">
-                        <!--激活，作为标题-->
-                        <a href="#" class="list-group-item">
-                            Personal center
-                        </a>
-                        <a href="car-个人首页.html" class="list-group-item ">My Personal center</a>
-                        <a href="car-改密码.html" class="list-group-item active">change password</a>
-                        <a href="car-改个人信息.html" class="list-group-item">Modify personal information</a>
-                
+                        <!--激活，作为标题-->	
+                        <a href="usercenter.html" class="list-group-item">My Personal Center</a>
+                        <a href="changepass.html" class="list-group-item active">Modify Password</a>
+                        <a href="changeinfo.html" class="list-group-item">Modify Personal Information</a>
+						<a href="order.html" class="list-group-item">Order Center</a>
                     </div>
 			
 			</div>
   <div class="col-md-8 center">
-	  <div class="mima">
-     <div class="col-md-3 center">
+	   <div class="col-md-6 center" style="margin-top: 3%">	
+	  <img src="images/555.jpeg" style="border-radius: 100%;" class="tu">
+	    <div class="bbbb">
+		   <p><font size="+2">Username</font></p>
+		  <p><font size="+1">Hello~</font></p>
+		 
+		  </div>  
+	  </div>
+	  <div class="col-md-6 center" style="margin-top: 5%">	
+	  <p>Account Security:normal</p>
+	  <p id="uid">TEL：178****0028</p>
+	  </div>
+	  <div class="middle" style="margin-top: 140px ">  </div>
+	  <div class="mima" style="padding-left: 27%;">
+     <div class="col-md-3 center" >
 	 <p><font size="+1">orginal password</font></p>
 	  </div>
 	   <div class="col-md-9 center block">
-	 <input type="text" required="required" placeholder="original password" name="u"/>  
+	 <input type="text" required="required" id="oldpass" placeholder="original password" name="u"/>  
 	  </div>
 	    <div class="col-md-3 center">
 	  <p><font size="+1">new password</font></p>
 	  </div>
 	   <div class="col-md-9 center block">
-	 <input type="text" required="required" placeholder="new password" name="u"/>  
+	 <input type="text" required="required" id="newpass" placeholder="new password" name="u"/>  
 	  </div>
 	   <div class="col-md-3 center">
 	 <p><font size="+1">repeat password</font></p>
 	  </div>
 	   <div class="col-md-9 center block">
-	 <input type="text" required="required" placeholder="repeat password"/>  
+	 <input type="text" required="required" id="repeat" placeholder="repeat password"/>  
 	  </div>
 	 	  <div class="col-md-6 center">
 			  <div align="center">
-			  <button type="button" class="btn btn-primary">SAVE</button>
-	  <button type="button" class="btn btn-default" style="margin-left: 15px">CANCEL</button>
+			  <button type="button" class="btn btn-primary" onclick="change()">SAVE</button>
 			  </div>
 	 
 	  

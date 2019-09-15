@@ -1,18 +1,17 @@
 var pagenum=5;
 var nowpage=1;
 var is_change=0;
-var pro1=['   <div class="row" id="'].join("");
+var onepagenum=5;
+var pro1=[' <div class="row mg" id="'].join("");
 var pro2=['">',
-'			<div class="row-pro">',
-'			<div class="col-md-9 font">',
-'						<span class="proid">'].join("");
-var pro3=['						</span> <span class="proname">'].join("");
-var pro4=['						</span>',
+'  		<div class="col-md-9 font">',
+'						<span class="artid">'].join("");
+var pro3=['</span>',
 '						</div>',
-'  			<div class="col-md-3 row-pro">',
-'				<button type="button" class="btn btn-primary aaa row-pro" data-toggle="modal" data-target="#myModalchange" onclick="putchange(this)">Change</button>',
-'				<button type="button" class="btn btn-primary aaa row-pro" onclick="del(this)" >Delete</button>',
-'				</div> </div></div>'].join("");
+'  			<div class="col-md-3">',
+'				<button type="button" class="btn btn-primary"data-toggle="modal" data-target="#myModalchange" onclick="putchange(this)">change</button>',
+'				<button type="button" class="btn btn-primary" onclick="del(this)">delete</button>',
+'				</div> </div>'].join("");
 function render(productlist)
 {
     if(pagenum>=2){
@@ -37,13 +36,11 @@ function render(productlist)
             }
         });
     }
-    $('#prolist').html("");
+    $('#usr').html("");
     for(i=0;i<productlist.length;i++){
-        $('#prolist').append(
-            pro1+'pro'+productlist[i].pid+
-            pro2+'id: '+productlist[i].pid+
-            pro3+'name: '+productlist[i].name+
-            pro4
+        $('#usr').append(
+            pro1+'usr'+productlist[i].uid+
+            pro2+productlist[i].uid+pro3
         );
     }
 }
@@ -51,11 +48,11 @@ function getlist()
 {
     $.ajax({
         type: "GET",
-        url: "manager.do/product/list",
+        url: "manager.do/user/list",
         dataType: "json",
         data:{
             page:nowpage,
-            num:5
+            num:onepagenum
         },
         success: function(result){
             if(result.result!=null)
@@ -74,23 +71,17 @@ function getpagenum()
 {
     $.ajax({
         type: "GET",
-        url: "manager.do/product/num",
+        url: "manager.do/user/num",
         dataType: "json",
         success: function(result){
-            var allpro=result.result;
-            pagenum=Math.ceil(allpro/5.0);
-            if(nowpage>pagenum)
-            {
-                if(is_change==1)
-                {            
-                    jump("product.html?page=1",1000);
-                    return;
-                }
+            pagenum=Math.ceil(result.result/onepagenum);
+            if(nowpage>pagenum&&pagenum!=0) {
                 toastr.warning("no such page! Back to home page in 2s...");
-                jump("home.html",2200);
-                return;
+                jump("admin/index.html",2200);
+            } 
+            else {
+                getlist();
             }
-            getlist(result);
          },
          error: function(){
             toastr.error("server error");
@@ -106,33 +97,30 @@ function loadpage()
 }
 function putchange(obj)
 {
-   var pid=$(obj).parent().parent().parent().attr("id");
-   if(pid==null){
-        $('#modal-label').html("Add Product");
+   var uid=$(obj).parent().parent().attr("id");
+   if(uid==null){
+        $('#modal-label').html("Add user");
         $('#modal-id').attr('value',"");
         $('#modal-id').attr("disabled",false);        
-        $('#modal-name').attr('value',"");
-        $('#modal-desc').attr('value',"");
-        $('#modal-price').attr('value',"");
-        $('#modal-stock').attr('value',"");     
-        $('#modal-state').attr('value',"");    
+        $('#modal-nick').attr('value',"");
+        $('#modal-address').attr('value',"");
+        $('#modal-birth').attr('value',"");
+        $('#modal-password').val("");
         return;
    }
    $.ajax({
     type: "GET",
-    url: "manager.do/product/detail",
+    url: "manager.do/user/",
     dataType: "json",
     data:{
-        pid:pid.substr(3,pid.length)
+        uid:uid.substr(3)
     },
     success: function(result){
-        $('#modal-id').attr('value',result.pid);
+        $('#modal-id').attr('value',result.uid);
         $('#modal-id').attr("disabled",true);        
-        $('#modal-name').attr('value',result.name);
-        $('#modal-desc').attr('value',result.shortdesc);
-        $('#modal-price').attr('value',result.price);
-        $('#modal-stock').attr('value',result.stock);     
-        $('#modal-state').attr('value',result.state);     
+        $('#modal-nick').attr('value',result.nickname);
+        $('#modal-address').attr('value',result.address);
+        $('#modal-birth').attr('value',result.birthday);
      },
      error: function(){
         toastr.error("server error");
@@ -141,29 +129,30 @@ function putchange(obj)
 }
 function confirm()
 {
-    var pro=
+    var ps=hex_md5(encodeURIComponent($('#modal-password').val()));
+    if($('#modal-password').val()=="")ps="";
+    var usr=
     {
-        pid:$('#modal-id').val(),
-        name:$('#modal-name').val(),
-        shortdesc:$('#modal-desc').val(),
-        price:$('#modal-price').val(),
-        state:$('#modal-state').val(),  
-        stock:$('#modal-stock').val() 
+        uid:$('#modal-id').val(),
+        nickname:$('#modal-nick').val(),
+        address:$('#modal-address').val(),
+        password:ps,
+        birthday:$('#modal-birth').val(),  
     }
-    if(pro.pid==null||pro.name==null||pro.shortdesc==null||pro.price==null||pro.state==null){
+    if(usr.uid==null||usr.nickname==null||usr.address==null||usr.birthday==null){
         toastr.warning(" Illegal input! ");
         return;
     }
     var addorchange;
-    if($('#modal-id').attr('disabled')=='disabled')addorchange="change";
+    if($('#modal-id').attr('disabled')=='disabled')addorchange="update";
     else addorchange="add";
 
     $.ajax({
         type: "POST",
-        url: "manager.do/product/"+addorchange,
+        url: "manager.do/user/"+addorchange,
         dataType: "json",
         contentType: 'application/json;charset=utf-8',
-        data:JSON.stringify(pro),
+        data:JSON.stringify(usr),
         success:function(result){
             if(result.result=="no")
             {
@@ -181,13 +170,13 @@ function confirm()
 }
 function del(obj)
 {
-    var pid=$(obj).parent().parent().parent().attr("id");
+    var uid=$(obj).parent().parent().attr("id");
     $.ajax({
         type: "POST",
-        url: "manager.do/product/del",
+        url: "manager.do/user/del",
         dataType: "json",
         data:{
-            pid:pid.substr(3,pid.length)
+            uid:uid.substr(3)
         },
         success:function(result){
             if(result.result=="no")

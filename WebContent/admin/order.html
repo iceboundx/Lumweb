@@ -6,19 +6,27 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>LumWeb manager system</title>
-		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="../css/homearticle.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
 		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script> 
-		<script src="../js/bootstrap-paginator.min.js"></script>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<link href="../css/toastr.css" rel="stylesheet" />
+		<script src="../js/toastr.min.js"></script>		
+		<script src="../js/adminorder.js"></script> 
+		<script src="../js/admintools.js"></script> 		
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="../js/bootstrap-paginator.min.js"></script>
+
 
     </head>
+	<script type="text/javascript">
+	toastr.options.positionClass = 'toast-center-center';
+	$(function(){
+		loadpage();
+	}
+	);
+	</script>
     <style type="text/css">
         body {
             padding: 20px;
@@ -41,7 +49,6 @@
     </style>
 
     <body>
-		<ul class="pagination"></ul>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -91,34 +98,68 @@
                         </ol>
                     </div>
 					
-					<div style="margin-bottom: 10px">
-					<span>Order generation interval：&nbsp;&nbsp;</span> <input  type="text" name="time1" value="1999-1-3" style="
-						width: 80px">
-						<span>&nbsp;to&nbsp;</span> <input type="text" name="time2" value="2000-1-1" style="width: 80px"> 
-						<span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product name：</span>  
-						<input type="text" name="product" style="width: 100px">
-						<button type="button" class="btn btn-primary" style="height: 30px;">Search</button>
-					</div>
-					
+					<div id="ord">
 					<div style="margin-top: 20px;">
+					<div class="row col-md-12">
 					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
-					<span id="ordtime" style="line-height: 30px"><strong>2019-1-1</strong></span> <span> &nbsp;&nbsp;&nbsp;&nbsp;订单号:</span> <span id="ordid">001001</span>
-					
+					<span class="col-md-6 ln" id="ordtime"><strong>2019-09-14 05:29:15</strong></span> 
+					<span class="col-md-6 ln" id="ordid">ID:201909140129141536888975</span>
+					</div>
+					</div>
+					<div class="row">
+						<div  class="row col-md-9">
+						<span class="col-md-6">userid:asdasdsd</span>
+						<span class="col-md-3">total price:123312</span>
+					</div>
+					<div style="" class="row col-md-3">
+						<span class="col-md-6" style="margin-top: 0px;">paying</span>
+						<a href="#" class="col-md-6">detail</a>
+					</div>
+					</div>
+					</div>
+					<div style="margin-top: 20px;">
+					<div class="row col-md-12">
+					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
+					<span class="col-md-6 ln" id="ordtime"><strong>2019-09-14 05:29:15</strong></span> 
+					<span class="col-md-6 ln" id="ordid">ID:201909140129141536888975</span>
+					</div>
 					</div>
 					<div class="row">
                     
 						<div  class="row col-md-9">
-						<span class="col-md-5">product name</span>
-						<span class="col-md-3">product price</span>
-						<span class="col-md-2">amount</span>
-						<a href="#" class="col-md-2" >shou hou</a>
+						<span class="col-md-6">userid:asdasdsd</span>
+						<span class="col-md-3">total price:123312</span>
 					</div>
 						
 					
 						
 					<div style="" class="row col-md-3">
-						<span class="col-md-6" style="margin-top: 0px;">sum price</span>
-						<a href="#" class="col-md-6">wu liu</a>
+						<span class="col-md-6" style="margin-top: 0px;">paying</span>
+						<a href="#" class="col-md-6">detail</a>
+					</div>
+						
+					</div>
+                   
+					</div>
+										<div style="margin-top: 20px;">
+					<div class="row col-md-12">
+					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
+					<span class="col-md-6 ln" id="ordtime"><strong>2019-09-14 05:29:15</strong></span> 
+					<span class="col-md-6 ln" id="ordid">ID:201909140129141536888975</span>
+					</div>
+					</div>
+					<div class="row">
+                    
+						<div  class="row col-md-9">
+						<span class="col-md-6">userid:asdasdsd</span>
+						<span class="col-md-3">total price:123312</span>
+					</div>
+						
+					
+						
+					<div style="" class="row col-md-3">
+						<span class="col-md-6" style="margin-top: 0px;">paying</span>
+						<a href="#" class="col-md-6">detail</a>
 					</div>
 						
 					</div>
@@ -126,108 +167,17 @@
 					</div>
 					
 					
-					<div style="margin-top: 20px;">
-					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
-					<span id="ordtime" style="line-height: 30px"><strong>2019-1-1</strong></span> <span> &nbsp;&nbsp;&nbsp;&nbsp;订单号:</span> <span id="ordid">001001</span>
 					
+                   </div>
+				     <center><ul class="pagination">
+				</ul></center>
 					</div>
-					<div class="row">
-                    
-						<div  class="row col-md-9">
-						<span class="col-md-5">product name</span>
-						<span class="col-md-3">product price</span>
-						<span class="col-md-2">amount</span>
-						<a href="#" class="col-md-2" >shou hou</a>
-					</div>
-						
-					
-						
-					<div style="" class="row col-md-3">
-						<span class="col-md-6" style="margin-top: 0px;">sum price</span>
-						<a href="#" class="col-md-6">wu liu</a>
-					</div>
-						
-					</div>
-                   
-					</div>
-					
-					
-					<div style="margin-top: 20px;">
-					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
-					<span id="ordtime" style="line-height: 30px"><strong>2019-1-1</strong></span> <span> &nbsp;&nbsp;&nbsp;&nbsp;订单号:</span> <span id="ordid">001001</span>
-					
-					</div>
-					<div class="row">
-                    
-						<div  class="row col-md-9">
-						<span class="col-md-5">product name</span>
-						<span class="col-md-3">product price</span>
-						<span class="col-md-2">amount</span>
-						<a href="#" class="col-md-2" >shou hou</a>
-					</div>
-						
-					
-						
-					<div style="" class="row col-md-3">
-						<span class="col-md-6" style="margin-top: 0px;">sum price</span>
-						<a href="#" class="col-md-6">wu liu</a>
-					</div>
-						
-					</div>
-                   
-					</div>
-					
-					
-					<div style="margin-top: 20px;">
-					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
-					<span id="ordtime" style="line-height: 30px"><strong>2019-1-1</strong></span> <span> &nbsp;&nbsp;&nbsp;&nbsp;订单号:</span> <span id="ordid">001001</span>
-					
-					</div>
-					<div class="row">
-                    
-						<div  class="row col-md-9">
-						<span class="col-md-5">product name</span>
-						<span class="col-md-3">product price</span>
-						<span class="col-md-2">amount</span>
-						<a href="#" class="col-md-2" >shou hou</a>
-					</div>
-						
-					
-						
-					<div style="" class="row col-md-3">
-						<span class="col-md-6" style="margin-top: 0px;">sum price</span>
-						<a href="#" class="col-md-6">wu liu</a>
-					</div>
-						
-					</div>
-                   
-					</div>
- 		
 						
                 
 					
 					<div class="row" align="center">
 						<div class="col-md-12">
-						<nav aria-label="Page navigation">
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-							<!-- 修改模态框Product-->
+							<!-- Change模态框Product-->
 			<div class="modal fade" id="myModalchange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -235,30 +185,37 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h4 class="modal-title" id="myModalLabel">
-					修改产品
+				<h4 class="modal-title" id="modal-label">
+					Change product
 				</h4>
 			</div>
 			 
-			<div class="row">
-			    <div class="col-md-6 in" >文章标题 :</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"  /></div>  
-			    <div class="col-md-6 in">文章内容 ：</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div>
+			<div class="row bbb">
+			    <div class="col-md-6 in" >id :</div>
+				 <div class="col-md-6 in"><input id="modal-id" type="text"  placeholder="" value="" name="u"  /></div>  
+			    <div class="col-md-6 in">Name :</div>
+				 <div class="col-md-6 in"><input id="modal-name" type="text"  placeholder="" name="u"/></div>
+				<div class="col-md-6 in">Description :</div>
+				 <div class="col-md-6 in"><input id="modal-desc" type="text"  placeholder="" name="u"/></div> 
+				<div class="col-md-6 in">Price :</div>
+				 <div class="col-md-6 in"><input id="modal-price" type="text"  placeholder="" name="u"/></div>
+				 <div class="col-md-6 in">Stock :</div>
+				 <div class="col-md-6 in"><input id="modal-stock" type="text"  placeholder="" name="u"/></div>
+				 <div class="col-md-6 in">State :</div>
+				 <div class="col-md-6 in"><input id="modal-state" type="text"  placeholder="" name="u"/></div>
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close
 				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
+				<button type="button" class="btn btn-primary" onclick="confirm()">
+					Confirm
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
 							
-
 					
 						</div>
 					</div>
@@ -270,8 +227,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-			
+	
     </body>
 		
 </html>

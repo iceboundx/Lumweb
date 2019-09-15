@@ -46,6 +46,11 @@ public class OrderDaoimpl implements OrderDao {
 			ArrayList<Item>all=(ArrayList<Item>)runner.query(sql, new BeanListHandler<Item>(Item.class), orderID);
 			for(int i=0;i<all.size();i++) {
 				Product nowpro=proDao.getProduct(all.get(i).getPid());
+				if(nowpro==null)
+				{
+					System.out.println(all.get(i).getPid());
+					continue;
+				}
 				all.get(i).setName(nowpro.getName());
 			}
 			String sql2="select * from orderinfo where oid=?";
@@ -85,7 +90,7 @@ public class OrderDaoimpl implements OrderDao {
 	
 	@Override
 	public ArrayList<Order> getList(int start,int end) {
-		String sql="select * from orderinfo limit ?,?";
+		String sql="select * from orderinfo order by ordertime desc limit ?,? ";
 		try {
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
 			return (ArrayList<Order>)runner.query(sql, new BeanListHandler<Order>(Order.class), start, end-start+1);
@@ -110,10 +115,16 @@ public class OrderDaoimpl implements OrderDao {
 	
 	@Override
 	public ArrayList<Order> getList(int start,int end,String uid) {
-		String sql="select * from orderinfo where uid=? limit ?,?";
+		String sql="select * from orderinfo where uid=? order by ordertime desc limit ?,? ";
 		try {
+			ArrayList<Order>ret=new ArrayList<Order>();
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			return (ArrayList<Order>)runner.query(sql, new BeanListHandler<Order>(Order.class), uid, start, end-start+1);
+			ArrayList<Order>odl=(ArrayList<Order>)runner.query(sql, new BeanListHandler<Order>(Order.class), uid, start, end-start+1);
+			for(int i=0;i<odl.size();i++) {
+				ret.add(getOrder(odl.get(i).getOid()));
+			}
+			return ret;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

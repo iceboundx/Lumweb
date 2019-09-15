@@ -18,17 +18,23 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 import domain.Article;
+import domain.Item;
 import domain.Manager;
+import domain.Order;
 import domain.Product;
 import domain.User;
 import service.ArticleService;
 import service.ManagerService;
+import service.OrderService;
 import service.ProductService;
 import service.UserService;
 import service.impl.ArticleServiceimpl;
 import service.impl.ManagerServiceimpl;
+import service.impl.OrderServiceimpl;
 import service.impl.ProductServiceimpl;
 import service.impl.UserServiceimpl;
 import utils.WebUtils;
@@ -39,6 +45,7 @@ public class ManagerServlet extends HttpServlet {
 	private ProductService proService=new ProductServiceimpl();
 	private ManagerService manService=new ManagerServiceimpl();
 	private ArticleService artService=new ArticleServiceimpl();
+	private OrderService ordService=new OrderServiceimpl();
 	private boolean isManager(HttpServletRequest request,HttpServletResponse response) 
 	throws IOException,ServletException {
 		HttpSession session=request.getSession();
@@ -110,10 +117,43 @@ public class ManagerServlet extends HttpServlet {
 			if(artService.delArt(id))response.getWriter().print(WebUtils.getRes("yes"));
 			else response.getWriter().print(WebUtils.getRes("no"));
 		}
+		
 		else if(cmd.equals("/manager.do/article/change")) {
 			String req=WebUtils.getBody(request);
 			Article article=(Article)JSON.parseObject(req,Article.class);
 			if(artService.changeArt(article))response.getWriter().print(WebUtils.getRes("yes"));
+			else response.getWriter().print(WebUtils.getRes("no"));
+		}
+		else if(cmd.equals("/manager.do/user/update")) {
+			System.out.println("qqqqq");
+			String req=WebUtils.getBody(request);
+			User user=(User)JSON.parseObject(req,User.class);
+			if(user.getUid()==null)response.getWriter().print(WebUtils.getRes("no"));
+			if(user.getPassword().equals("")) {
+				System.out.println("nochangepass");
+				if(userService.ChangeInfo(user))response.getWriter().print(WebUtils.getRes("yes"));
+				else response.getWriter().print(WebUtils.getRes("no")); 
+			}
+			else {
+				System.out.println(user.getPassword());
+				String newPass=user.getPassword();
+				if(!userService.ChangeInfo(user))response.getWriter().print(WebUtils.getRes("no")); 
+				System.out.println("ok");
+				if(userService.manChangePass(user.getUid(), newPass)) {
+					response.getWriter().print(WebUtils.getRes("yes"));
+				}
+				else response.getWriter().print(WebUtils.getRes("no"));
+			}
+		}
+		else if(cmd.equals("/manager.do/user/add")) {
+			String req=WebUtils.getBody(request);
+			User user=(User)JSON.parseObject(req,User.class);
+			if(userService.UserReg(user))response.getWriter().print(WebUtils.getRes("yes"));
+			else response.getWriter().print(WebUtils.getRes("no"));
+		}
+		else if(cmd.equals("/manager.do/user/del")) {
+			String id=request.getParameter("uid");
+			if(userService.delUser(id))response.getWriter().print(WebUtils.getRes("yes"));
 			else response.getWriter().print(WebUtils.getRes("no"));
 		}
 		else if(cmd.equals("/manager.do/upload")) {
@@ -159,7 +199,7 @@ public class ManagerServlet extends HttpServlet {
 		else
 		{
 			HttpSession session=request.getSession();
-			String per=(String)session.getAttribute("permission");
+			String per=session.getAttribute("permission").toString();
 			if(!per.equals("1")) {
 				response.getWriter().print(WebUtils.getRes("nopermission"));
 				return;
@@ -170,11 +210,15 @@ public class ManagerServlet extends HttpServlet {
 				if(manService.addMan(man))response.getWriter().print(WebUtils.getRes("yes"));
 				else response.getWriter().print(WebUtils.getRes("no"));
 			}
-			else if(cmd.equals("/manager.do/changepermission")) {
-				int permi=Integer.parseInt(request.getParameter("permission"));
-				if(permi<0||permi>5) {response.getWriter().print(WebUtils.getRes("no"));return;}
-				String uid=request.getParameter("uid");
-				if(manService.ChangePermission(uid, permi))response.getWriter().print(WebUtils.getRes("yes"));
+			else if(cmd.equals("/manager.do/update")) {
+				String req=WebUtils.getBody(request);
+				System.out.println("xxxxx");
+				Manager man=(Manager)JSON.parseObject(req,Manager.class);
+				System.out.println("xxxxx");
+				String uid=man.getUid();
+				if(!manService.delMan(uid))response.getWriter().print(WebUtils.getRes("no"));
+				System.out.println("xxxxx");
+				if(manService.addMan(man))response.getWriter().print(WebUtils.getRes("yes"));
 				else response.getWriter().print(WebUtils.getRes("no"));
 			}
 			else if(cmd.equals("/manager.do/del")) {
@@ -201,6 +245,19 @@ public class ManagerServlet extends HttpServlet {
 			}
 			response.getWriter().print(JSON.toJSONString(ul));
 		}
+		else if(cmd.equals("/manager.do/user/")) {
+			String uid=request.getParameter("uid");
+			if(uid==null) {
+				response.getWriter().print(WebUtils.getRes("no"));
+			}
+			else {
+				User user=userService.getUser(uid);
+				user.setPassword(null);
+				user.setPasswordSalt(null);
+				response.getWriter().print(JSON.toJSONString(user));
+			}
+
+		}
 		else if(cmd.equals("/manager.do/islogin")) {
 			response.getWriter().print(WebUtils.getRes("yes"));
 		}
@@ -212,6 +269,32 @@ public class ManagerServlet extends HttpServlet {
 			man.setPassword(null);
 			man.setPasswordsalt(null);
 			response.getWriter().print(JSON.toJSONString(man));
+		}
+		else if(cmd.equals("/manager.do/order/num")) {
+			response.getWriter().print(WebUtils.getRes(ordService.getListNum(null)));
+		}
+		else if(cmd.equals("/manager.do/order/list")) {
+			int p=Integer.parseInt(request.getParameter("page"));
+			int num=Integer.parseInt(request.getParameter("num"));
+			ArrayList<Order> olist=ordService.getList((p-1)*num, p*num-1,null);
+			for(int i=0;i<olist.size();i++) {
+				olist.get(i).setOrderitems(null);
+			}
+			JSONObject.DEFFAULT_DATE_FORMAT="yyyy-MM-dd HH:mm:ss";
+			response.getWriter().print(JSON.toJSONString(olist,SerializerFeature.WriteDateUseDateFormat));
+		}
+		else if(cmd.equals("/manager.do/order/detail")) {
+			String oid=request.getParameter("oid");
+			Order ord=ordService.getOrder(oid);
+			if(ord==null){
+				response.getWriter().print(WebUtils.getRes("no"));
+				return;
+			}
+			for(Item it:ord.getOrderitems()) {
+				System.out.println(it.getPrice());
+			}
+			JSONObject.DEFFAULT_DATE_FORMAT="yyyy-MM-dd HH:mm:ss";
+			response.getWriter().print(JSON.toJSONString(ord,SerializerFeature.WriteDateUseDateFormat));
 		}
 		else if(cmd.equals("/manager.do/user/num")) {
 			response.getWriter().print(WebUtils.getRes(userService.getTotalNum()));

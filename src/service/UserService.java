@@ -14,4 +14,5 @@ public interface UserService {
 	public boolean delUser(String userID);
 	public User getUser(String userID);
 	public boolean existUser(String userID);
+	public boolean manChangePass(String uid, String newPassword);
 }

@@ -4,7 +4,7 @@
 	
 	<default-config>
 		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/lumweb?&amp;useSSL=false&amp;serverTimezone=UTC</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/lumweb?&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</property>
 		<property name="user">root</property>
 		<property name="password">123456</property>
 		
@@ -19,7 +19,7 @@
 	
 	<named-config name="mysql">
 		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
-		<property name="jdbcUrl">jdbc:mysql://localhost:3306/lumweb?&amp;useSSL=false&amp;serverTimezone=UTC</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/lumweb?&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</property>
 		<property name="user">root</property>
 		<property name="password">123456</property>
 		
