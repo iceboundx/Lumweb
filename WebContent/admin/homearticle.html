@@ -14,6 +14,7 @@
 		<script src="../js/bootstrap-paginator.min.js"></script>
 		<link href="../css/toastr.css" rel="stylesheet" />
 		<script src="../js/toastr.min.js"></script>		
+		<link href="../css/loading.css" rel="stylesheet" />
 		<script src="../js/adminart.js"></script> 
 		<script src="../js/admintools.js"></script> 		
 
@@ -38,14 +39,26 @@
 
         .search .toolbar {}
     </style>
-	<script type="text/javascript">
+    <body>
+		<script type="text/javascript">
 	toastr.options.positionClass = 'toast-center-center';
 	$(function(){
 		loadpage();
 	}
 	);
 	</script>
-    <body>
+		<div class="loadingajax" id="loading">
+	<div class="loadingback"></div>
+	<div class="loading">
+		<p>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		</p>
+	</div>
+	</div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

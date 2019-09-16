@@ -72,3 +72,9 @@ function logout() {
         }
         }); 
 }
+function startLoad() {
+    $("#loading").show("fast");
+}
+function endLoad() {
+    $("#loading").hide("fast");
+}

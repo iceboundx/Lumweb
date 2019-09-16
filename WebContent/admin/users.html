@@ -12,6 +12,7 @@
 		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="../js/bootstrap-paginator.min.js"></script>
+		<link href="../css/loading.css" rel="stylesheet" />
 		<link href="../css/toastr.css" rel="stylesheet" />
 		<script src="../js/toastr.min.js"></script>		
 		<script src="../js/adminuser.js"></script> 
@@ -38,6 +39,7 @@
 
         .search .toolbar {}
     </style>
+	
 	<script type="text/javascript">
 	toastr.options.positionClass = 'toast-center-center';
 	$(function(){
@@ -46,6 +48,18 @@
 	);
 	</script>
     <body>
+		<div class="loadingajax" id="loading">
+	<div class="loadingback"></div>
+	<div class="loading">
+		<p>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		</p>
+	</div>
+	</div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

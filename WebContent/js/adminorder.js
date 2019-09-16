@@ -78,6 +78,7 @@ function render(productlist)
             pro5+productlist[i].state+pro6
         );
     }
+    endLoad();
 }
 function getlist()
 {
@@ -125,6 +126,7 @@ function getpagenum()
 }
 function loadpage()
 {
+    startLoad();
     if(!is_login())
 	{
 		window.location.href="login.html";

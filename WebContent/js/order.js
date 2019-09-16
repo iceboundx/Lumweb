@@ -84,11 +84,12 @@ function render(productlist)
             str+=(it1+x[j].name+
                 it2+x[j].price+
                 it3+x[j].quantity+
-                it4+parseFloat(x[j].price)*parseInt(x[j].quantity)+
+                it4+(parseFloat(x[j].price)*parseInt(x[j].quantity)).toFixed(2)+
                 (j==0?it5:itx));
         }
         $('#ord').append(str);
     }
+    alert("okkk");
     endLoad();
 }
 function getlist()

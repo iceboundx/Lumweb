@@ -43,6 +43,7 @@ function render(productlist)
             pro2+productlist[i].uid+pro3
         );
     }
+    endLoad();
 }
 function getlist()
 {
@@ -90,6 +91,7 @@ function getpagenum()
 }
 function loadpage()
 {
+    startLoad();
     var page=GetQueryString("page");
     if(page=="")page=1;
     nowpage=page;
