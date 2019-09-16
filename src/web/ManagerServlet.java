@@ -106,12 +106,6 @@ public class ManagerServlet extends HttpServlet {
 			if(proService.changePro(product))response.getWriter().print(WebUtils.getRes("yes"));
 			else response.getWriter().print(WebUtils.getRes("no"));
 		}
-		else if(cmd.equals("/manager.do/article/add")) {
-			String req=WebUtils.getBody(request);
-			Article article=(Article)JSON.parseObject(req,Article.class);
-			if(artService.addArt(article))response.getWriter().print(WebUtils.getRes("yes"));
-			else response.getWriter().print(WebUtils.getRes("no"));
-		}  
 		else if(cmd.equals("/manager.do/article/del")) {
 			String id=request.getParameter("id");
 			if(artService.delArt(id))response.getWriter().print(WebUtils.getRes("yes"));
@@ -121,6 +115,7 @@ public class ManagerServlet extends HttpServlet {
 		else if(cmd.equals("/manager.do/article/change")) {
 			String req=WebUtils.getBody(request);
 			Article article=(Article)JSON.parseObject(req,Article.class);
+			System.out.println(article.getId());
 			if(artService.changeArt(article))response.getWriter().print(WebUtils.getRes("yes"));
 			else response.getWriter().print(WebUtils.getRes("no"));
 		}
@@ -205,6 +200,19 @@ public class ManagerServlet extends HttpServlet {
 			}
 		    boolean res= file.delete();
 		    if(res==true)response.getWriter().print(WebUtils.getRes("yes"));
+		    else response.getWriter().print(WebUtils.getRes("no"));
+		}
+		else if(cmd.equals("/manager.do/article/add")) {
+			String req=WebUtils.getBody(request);
+			Article art=(Article)JSON.parseObject(req,Article.class);
+			Article newart=artService.createArt(art);
+			System.out.println(newart.getId());
+			if(artService.addArt(newart))response.getWriter().print(WebUtils.getRes("yes"));
+		    else response.getWriter().print(WebUtils.getRes("no"));
+		}
+		else if(cmd.equals("/manager.do/article/del")) {
+			String id=request.getParameter("id");
+			if(artService.delArt(id))response.getWriter().print(WebUtils.getRes("yes"));
 		    else response.getWriter().print(WebUtils.getRes("no"));
 		}
 		else
@@ -339,7 +347,7 @@ public class ManagerServlet extends HttpServlet {
 			String id=request.getParameter("id");
 			Article ar=artService.getContent(id);
 			if(ar==null)response.getWriter().print(WebUtils.getRes("no"));
-			response.getWriter().print(JSON.toJSONString(ar));
+			else response.getWriter().print(JSON.toJSONString(ar));
 		}
 		else if(cmd.equals("/manager.do/num")) {
 			response.getWriter().print(WebUtils.getRes(manService.getTotalNum()));

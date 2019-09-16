@@ -9,7 +9,7 @@ var pro2=['">',
 var pro3=['</span>',
 '						</div>',
 '  			<div class="col-md-3">',
-'				<button type="button" class="btn btn-primary we"data-toggle="modal" data-target="#myModalchange">change</button>',
+'				<button type="button" class="btn btn-primary we" data-toggle="modal" data-target="#myModalchange" onclick="putchange(this)">change</button>',
 '				<button type="button" class="btn btn-primary we">delete</button>',
 '				</div> </div>'].join("");
 function render(productlist)
@@ -99,4 +99,83 @@ function loadpage()
     if(page=="")page=1;
     nowpage=page;
     getpagenum();
+}
+function putchange(obj)
+{
+
+    var id=$(obj).parent().parent().attr("id");
+    if(id==null){
+        $('#modal-id').attr('value',"NO ID");       
+        $('#modal-title').val("");
+        $('#modal-type').val("");
+        $('#modal-news').val("");
+        $('#modal-author').val("");
+        return;
+   }
+   $.ajax({
+    type: "GET",
+    url: "manager.do/article/detail",
+    dataType: "json",
+    data:{
+        id:id.substr(3)
+    },
+    success: function(result){
+        if(result.result=='no')
+        {
+            toastr.warning("Something wrong!");
+            $('#myModalchange').modal('hide');
+            $(".modal-backdrop.fade").hide();
+            loadpage();
+        }
+        else{
+            $('#modal-id').val(result.id);
+            $('#modal-title').val(result.title);
+            $('#modal-type').val(result.type);
+            $('#modal-news').text(result.content);
+            $('#modal-author').val(result.author);
+        }
+     },
+     error: function(){
+        toastr.error("server error");
+     }
+ });
+}
+function confirm()
+{
+    var art=
+    {
+        id:$('#modal-id').val(),
+        title:$('#modal-title').val(),
+        type:$('#modal-type').val(),
+        content:$('#modal-news').val(),
+        author:$('#modal-author').val()
+    }
+    if(art.title==null||art.type==null||art.content==null||art.author==null){
+        toastr.warning(" Illegal input! ");
+        return;
+    }
+    var addorchange;
+    if($('#modal-id').val()=='NO ID')addorchange="add";
+    else addorchange="change";
+
+    $.ajax({
+        type: "POST",
+        url: "manager.do/article/"+addorchange,
+        dataType: "json",
+        contentType: 'application/json;charset=utf-8',
+        data:JSON.stringify(art),
+        success:function(result){
+            if(result.result=="no")
+            {
+                toastr.error("Something wrong! Please check again...");
+                return;
+            }
+            $("#myModalchange").modal('hide');
+            loadpage();
+            toastr.success("save success!");
+         },
+         error:function(){
+            toastr.error("server error");
+         }
+    });
 }

@@ -95,6 +95,9 @@
                             <li class="active">Article</li>
                         </ol>
                     </div>
+				<button type="button" onclick="putchange()" class="btn btn-default" data-toggle="modal" data-target="#myModalchange">
+				Add article
+				</button>
                     <div id="artlist">
                     <div class="row mg" id="001">
   		<div class="col-md-9 font">
@@ -155,28 +158,36 @@
 					&times;
 				</button>
 				<h4 class="modal-title" id="myModalLabel">
-					修改产品
+					Change Article
 				</h4>
 			</div>
 			 
 			<div class="row">
-			    <div class="col-md-6 in" >文章标题 :</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"  /></div>  
-			    <div class="col-md-6 in">文章内容 ：</div>
-				 <div class="col-md-6 in"><input type="text"  placeholder="1111" name="u"/></div>
+			<div class="col-md-3 in" ><font size="+1">ID :</font></div>
+				 <div class="col-md-9 in"><input type="text"  placeholder="" name="u"  style="margin-top:1%; min-width:90%;" disabled="" id="modal-id"/></div>  
+				<div class="col-md-3 in" ><font size="+1">author :</font></div>
+				 <div class="col-md-9 in"><input type="text"  placeholder="" name="u"  style="margin-top:1%; min-width:90%;" id="modal-author"/></div>  
+			    <div class="col-md-3 in" ><font size="+1">title :</font></div>
+				 <div class="col-md-9 in"><input type="text"  placeholder="" name="u"  style="margin-top:1%; min-width:90%;" id="modal-title"/></div>  
+			    <div class="col-md-3 in" ><font size="+1">type :</font></div>
+				 <div class="col-md-9 in"><input type="text"  placeholder="" name="u"  style="margin-top:1%; min-width:90%;" id="modal-type"/></div>
+				 <div class="col-md-12 in"><font size="+1">content</font></div>
+				 <div class="col-md-12"><textarea type="text" name="u" style="height:500px; min-width:90%;" id="modal-news"></textarea></div>
+				
+
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				<button type="button" class="btn btn-default" data-dismiss="modal">close
 				</button>
-				<button type="button" class="btn btn-primary">
-					提交更改
+				<button type="button" class="btn btn-primary" onclick="confirm()">
+					commit change
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
-							
+</div>							
 
 					
 						</div>

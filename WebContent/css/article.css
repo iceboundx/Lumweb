@@ -160,7 +160,12 @@ body{
    line-height:25px;
 }
 
-
+#content {
+    width: 100%;  
+    height: auto;  
+    word-wrap:break-word;  
+    word-break:break-all;  
+}
 
 
 .pagination{

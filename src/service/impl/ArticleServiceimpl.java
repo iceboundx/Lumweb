@@ -48,6 +48,7 @@ public class ArticleServiceimpl implements ArticleService {
 	@Override
 	public boolean changeArt(Article article) {
 		if(!existID(article.getId()))return false;
+		article.setCreateTime(getContent(article.getId()).getCreateTime());
 		delArt(article.getId());
 		addArt(article);
 		return true;
@@ -63,5 +64,11 @@ public class ArticleServiceimpl implements ArticleService {
 	public boolean existID(String id) {
 		if(artDao.existArt(id))return true;
 		return false;
+	}
+	@Override
+	public Article createArt(Article art) {
+		art.setCreateTime(new Date());
+		art.setId(createID());
+		return art;
 	}
 }
