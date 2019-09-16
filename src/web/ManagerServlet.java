@@ -63,7 +63,7 @@ public class ManagerServlet extends HttpServlet {
 			throws IOException,ServletException {
 		String cmd=WebUtils.getCmd(request);
 		cmd=cmd.substring(6);
-		System.out.println(cmd);
+		System.out.println("xxx"+cmd);
 		if(cmd.equals("/manager.do/login")) {
 			HttpSession session=request.getSession();
 			if(session.getAttribute("permission")!=null) {
@@ -156,7 +156,7 @@ public class ManagerServlet extends HttpServlet {
 			if(userService.delUser(id))response.getWriter().print(WebUtils.getRes("yes"));
 			else response.getWriter().print(WebUtils.getRes("no"));
 		}
-		else if(cmd.equals("/manager.do/upload")) {
+		else if(cmd.equals("/manager.do/file/upload")) {
 			System.out.println("upload");
 	        DiskFileItemFactory factory=new DiskFileItemFactory();
 	        //factory.setRepository(new File("‪D:"));
@@ -195,6 +195,17 @@ public class ManagerServlet extends HttpServlet {
 	        }
 	        response.getWriter().print(WebUtils.getRes("error"));
 	        return;
+		}
+		else if(cmd.equals("/manager.do/file/del")) {
+			String name=request.getParameter("name");
+			File file=new File("d:/file/"+name);
+			if (!file.exists()){
+				response.getWriter().print(WebUtils.getRes("no"));
+				return;
+			}
+		    boolean res= file.delete();
+		    if(res==true)response.getWriter().print(WebUtils.getRes("yes"));
+		    else response.getWriter().print(WebUtils.getRes("no"));
 		}
 		else
 		{
@@ -343,16 +354,32 @@ public class ManagerServlet extends HttpServlet {
 			}
 			response.getWriter().print(JSON.toJSONString(ml));
 		}
-		else if(cmd.equals("/manager.do/file")) {
+		else if(cmd.equals("/manager.do/file/list")) {
+			int p=Integer.parseInt(request.getParameter("page"));
+			int num=Integer.parseInt(request.getParameter("num"));
+			int sta=(p-1)*num+1,ed=p*num;
+			int tot=0;
 			ArrayList<String>filelist=new ArrayList();
 			String path = "d:/file/";		//要遍历的路径
 			File file = new File(path);		//获取其file对象
 			File[] fs = file.listFiles();	//遍历path下的文件和目录，放在File数组中
 			for(File f:fs){					//遍历File[]数组
 				if(!f.isDirectory())		//若非目录(即文件)，则打印
+				{
+					tot++;
+					if(tot<sta)continue;
+					if(tot>ed)continue;
 					filelist.add(f.getName());
+				}
 			}
 			response.getWriter().print(JSON.toJSONString(filelist));
+		}
+		else if(cmd.equals("/manager.do/file/num")) {
+			ArrayList<String>filelist=new ArrayList();
+			String path = "d:/file/";		//要遍历的路径
+			File file = new File(path);		//获取其file对象
+			File[] fs = file.listFiles();	//遍历path下的文件和目录，放在File数组中
+			response.getWriter().print(WebUtils.getRes(fs.length));
 		}
 		else response.sendError(404);
 	}

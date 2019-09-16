@@ -90,6 +90,11 @@ function getpagenum()
 }
 function loadpage()
 {
+    if(!is_login())
+	{
+		window.location.href="login.html";
+		return;
+	}
     var page=GetQueryString("page");
     if(page=="")page=1;
     nowpage=page;

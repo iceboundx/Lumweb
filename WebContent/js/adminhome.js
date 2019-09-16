@@ -16,7 +16,7 @@ function loadpage()
 {
 	if(!is_login())
 	{
-		window.location.href="index.html";
+		window.location.href="login.html";
 		return;
 	}
 	getadmin();

@@ -86,6 +86,7 @@
                         <a href="users.html" class="list-group-item ">Users</a>
                         <a href="order.html" class="list-group-item active">Orders</a>
                         <a href="manager.html" class="list-group-item">Managers</a>
+						<a href="file.html" class="list-group-item">Files</a>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -113,11 +114,11 @@
 					</div>
 					<div style="" class="row col-md-3">
 						<span class="col-md-6" style="margin-top: 0px;">paying</span>
-						<a href="#" class="col-md-6">detail</a>
+						<a href="#" class="col-md-6" data-toggle="modal" data-target="#myModalchange">detail</a>
 					</div>
 					</div>
 					</div>
-					<div style="margin-top: 20px;">
+					<div style="margin-top: 20px;" id="123">
 					<div class="row col-md-12">
 					<div style="background-color:rgba(239,239,239,1.00); height: 30px;">
 					<span class="col-md-6 ln" id="ordtime"><strong>2019-09-14 05:29:15</strong></span> 
@@ -159,7 +160,7 @@
 						
 					<div style="" class="row col-md-3">
 						<span class="col-md-6" style="margin-top: 0px;">paying</span>
-						<a href="#" class="col-md-6">detail</a>
+						<a href="#" class="col-md-6" data-toggle="modal" data-target="#myModalchange">detail</a>
 					</div>
 						
 					</div>
@@ -177,7 +178,7 @@
 					
 					<div class="row" align="center">
 						<div class="col-md-12">
-							<!-- Change模态框Product-->
+							<!-- 订单详情模态框Product-->
 			<div class="modal fade" id="myModalchange" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -185,31 +186,35 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h4 class="modal-title" id="modal-label">
-					Change product
+				<h4 class="modal-title" id="myModalLabel">
+					Order Detail
 				</h4>
 			</div>
-			 
-			<div class="row bbb">
-			    <div class="col-md-6 in" >id :</div>
-				 <div class="col-md-6 in"><input id="modal-id" type="text"  placeholder="" value="" name="u"  /></div>  
-			    <div class="col-md-6 in">Name :</div>
-				 <div class="col-md-6 in"><input id="modal-name" type="text"  placeholder="" name="u"/></div>
-				<div class="col-md-6 in">Description :</div>
-				 <div class="col-md-6 in"><input id="modal-desc" type="text"  placeholder="" name="u"/></div> 
-				<div class="col-md-6 in">Price :</div>
-				 <div class="col-md-6 in"><input id="modal-price" type="text"  placeholder="" name="u"/></div>
-				 <div class="col-md-6 in">Stock :</div>
-				 <div class="col-md-6 in"><input id="modal-stock" type="text"  placeholder="" name="u"/></div>
-				 <div class="col-md-6 in">State :</div>
-				 <div class="col-md-6 in"><input id="modal-state" type="text"  placeholder="" name="u"/></div>
+			<div id="orderdetail">
+			 <div class="row">
+			 <div class="col-md-12 in">
+			 <h5>address:sdjkhsahjkdjkshadhsakdad</h5>
+			 </div>
+			 </div>
+			<div class="row">
+				<div class="col-md-2 in" >ID:123</div>
+			    <div class="col-md-3 in" >productA</div>
+				  <div class="col-md-2 in" >213</div>
+			    <div class="col-md-2 in">x10</div>
+				 <div class="col-md-3 in">total:￡123</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 in" >ID:123</div>
+			    <div class="col-md-3 in" >productA</div>
+				  <div class="col-md-2 in" >213</div>
+			    <div class="col-md-2 in">x10</div>
+				 <div class="col-md-3 in">total:￡123</div>
+			</div>
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close
-				</button>
-				<button type="button" class="btn btn-primary" onclick="confirm()">
-					Confirm
+				
+				<button type="button" class="btn btn-default" data-dismiss="modal">close
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
