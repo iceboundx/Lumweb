@@ -4,14 +4,15 @@ var is_change=0;
 var pro1=['   <div class="row" id="'].join("");
 var pro2=['">',
 '			<div class="row-pro">',
-'			<div class="col-md-9 font">',
+'			<div class="col-md-8 font">',
 '						<span class="proid">'].join("");
 var pro3=['						</span> <span class="proname">'].join("");
 var pro4=['						</span>',
 '						</div>',
-'  			<div class="col-md-3 row-pro">',
-'				<button type="button" class="btn btn-primary aaa row-pro" data-toggle="modal" data-target="#myModalchange" onclick="putchange(this)">Change</button>',
-'				<button type="button" class="btn btn-primary aaa row-pro" onclick="del(this)" >Delete</button>',
+'  			<div class="col-md-4 row-pro">',
+'				<button type="button" class="btn btn-primary aaa row-pro" data-toggle="modal" data-target="#myModalchange" onclick="putchange(this)">change</button>',
+'				<button type="button" class="btn btn-primary aaa row-pro" onclick="del(this)" >delete</button>',
+'				<button type="button" class="btn btn-primary aaa" data-toggle="modal" data-target="#modalupload" onclick="putupload(this)">image</button>',
 '				</div> </div></div>'].join("");
 function render(productlist)
 {
@@ -105,7 +106,7 @@ function loadpage()
 	{
 		window.location.href="login.html";
 		return;
-	}
+    }
     var page=GetQueryString("page");
     if(page=="")page=1;
     nowpage=page;
@@ -145,6 +146,39 @@ function putchange(obj)
         toastr.error("server error");
      }
  });
+}
+function putupload(obj)
+{
+
+   var pid=$(obj).parent().parent().parent().attr("id");
+   if(pid==null){
+       toastr.error("error!!!"); 
+        return;
+   }
+   var id=pid.substr(3);
+   setproid(id);
+   $("#modal-big").attr('src',"../images/product/pro"+id+".jpg");
+   $("#modal-small").attr('src',"../images/product/thum"+id+".jpg");
+   $("#modal-detail").attr('src',"../images/product/detail"+id+".jpg");
+   $('#modal-btn-a').prop("disabled",true);
+   $('#modal-btn-b').prop("disabled",true);
+   $('#modal-btn-c').prop("disabled",true);
+   var file = $('#fileToUpload')[0];
+   if(file.outerHTML){
+       file.outerHTML = file.outerHTML;
+   }else{
+       file.value = '';
+   }
+   $('#fileName').html("");
+   $('#fileSize').html("");
+   $('#fileType').html("");
+   $('#fileName').html("");
+}
+function reload(id)
+{
+   $("#modal-big").attr('src',"../images/product/pro"+id+".jpg");
+   $("#modal-small").attr('src',"../images/product/thum"+id+".jpg");
+   $("#modal-detail").attr('src',"../images/product/detail"+id+".jpg");
 }
 function confirm()
 {

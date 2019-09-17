@@ -16,12 +16,13 @@
 		<link href="../css/loading.css" rel="stylesheet" />
 		<script src="../js/toastr.min.js"></script>		
 		<script src="../js/adminpro.js"></script> 
-		<script src="../js/admintools.js"></script> 		
+		<script src="../js/admintools.js"></script>
+		<script src="../js/upload.js"></script> 	 		
 		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="../js/bootstrap-paginator.min.js"></script>
 
     </head>
-		<div class="loadingajax" id="loading">
+			<div class="loadingajax" id="loading">
 	<div class="loadingback"></div>
 	<div class="loading">
 		<p>
@@ -37,6 +38,7 @@
 	toastr.options.positionClass = 'toast-center-center';
 	$(function(){
 		loadpage();
+		nowpro();
 	}
 	);
 	</script>
@@ -118,10 +120,11 @@
                <div id="prolist">
 			   <div class="row-pro">
                     <div class="row" id="001">
-			<div class="col-md-9 font">
+			<div class="col-md-8 font">
 						<span class="proid"> Loading</span> <span class="proname"> Loading</span>
 						</div>
-  			<div class="col-md-3 ">
+  			<div class="col-md-4 ">
+				<button type="button" class="btn btn-primary aaa" data-toggle="modal" data-target="#modalupload" onclick="putupload()">image</button>
 				<button type="button" class="btn btn-primary aaa" data-toggle="modal" data-target="#myModalchange">Change</button>
 				<button type="button" class="btn btn-primary aaa">Delete</button>
 				</div> </div></div>
@@ -201,6 +204,70 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
+			<div class="modal fade" id="modalupload" tabindex="-1" role="dialog" aria-labelledby="ModalUploadLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="ModalUploadLabel">
+					upload Pic
+				</h4>
+			</div>
+			 
+				<div class="row">
+					<label for="fileToUpload">Select a File to Upload</label><br>
+					<input type="file" name="fileToUpload" id="fileToUpload" onchange='fileSelected();' accept=".jpg">
+				</div>
+				<br>
+				<div id="fileName"></div>
+				<div id="fileSize"></div>
+				<div id="fileType"></div>
+				<br>
+				<div id="progressNumber"></div>
+			<br>
+			<div class="row">
+			<div class="col-md-4" >
+			<div class="row" style="margin-bottom:2%">
+			The big image of product:
+			</div>
+			<div class="row" id="bigimg" style="margin-bottom:2%">
+			<img id="modal-big" src="../images/555.jpeg" class="tu">
+			</div>
+			<button type="button" class="btn btn-primary"  id="modal-btn-a" onclick='uploadFile("pro")' disabled="disabled">
+			upload for big image
+			</button>
+			</div>
+			<div class="col-md-4" >
+			<div class="row" style="margin-bottom:2%">
+			The small image of product:
+			</div>
+			<div class="row" id="smallimg" style="margin-bottom:2%">
+			<img id="modal-small" src="../images/555.jpeg" class="tu">
+			</div>
+			<button type="button" class="btn btn-primary"  id="modal-btn-b" onclick='uploadFile("thum")' disabled="disabled">
+			upload for small image
+			</button>
+			</div>
+			<div class="col-md-4">
+			<div class="row" style="margin-bottom:2%">
+			The detail image of product:
+			</div>
+			<div class="row" id="detailimg" style="margin-bottom:2%">
+			<img id="modal-detail" src="../images/555.jpeg" class="tu">
+			</div>
+			<button type="button" class="btn btn-primary"  id="modal-btn-c" onclick='uploadFile("detail")' disabled="disabled">
+			upload for detail image
+			</button>
+			</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">close
+				</button>
+			</div>
+			</div>
+
+
+		</div><!-- /.modal-content -->
+	</div>
 							
 					
 						</div>

@@ -16,6 +16,7 @@
 		<link href="../css/loading.css" rel="stylesheet" />
 		<script src="../js/toastr.min.js"></script>		
 		<script src="../js/upload.js"></script> 
+		<script src="../js/file.js"></script> 
 		<script src="../js/admintools.js"></script> 	
 		<script src="../js/MD5.js"></script> 	
     </head>
@@ -105,7 +106,7 @@
                             <li><span class="glyphicon glyphicon-home"></span>&nbsp;
                                 <a href="#">Manager Homepage</a>
                             </li>
-                            <li class="active">Users</li>
+                            <li class="active">Files</li>
                         </ol>
                     </div>
 					<button type="button" onclick="putchange()" class="btn btn-default" data-toggle="modal" data-target="#myModalchange">
@@ -168,9 +169,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-					&times;
-				</button>
+
 				<h4 class="modal-title" id="myModalLabel">
 					change information
 				</h4>
@@ -192,7 +191,7 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">close
 				</button>
-				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="uploadFile()">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick='uploadFile("notype")'>
 					commit change
 				</button>
 			</div>

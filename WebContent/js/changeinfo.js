@@ -65,6 +65,7 @@ function putchange()
         $('#modal-nick').attr('value',result.nickname);
         $('#modal-address').attr('value',result.address);
         $('#modal-birth').attr('value',result.birthday);
+        $('#username').html(result.nickname);    
      },
      error: function(){
         toastr.error("server error");
@@ -87,6 +88,7 @@ function loadpage(){
             $('#nickname').html("Nick name: "+result.nickname);
             $('#address').html("Address: "+result.address);
             $('#birth').html("Birthday "+result.birthday);
+            $('#username').html(result.nickname); 
          },
          error: function(){
             toastr.error("server error");

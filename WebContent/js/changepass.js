@@ -53,6 +53,7 @@ function loadpage(){
         dataType: "json",
         success: function(result){  
             $('#uid').html("TEL: "+result.uid);   
+            $('#username').html(result.nickname);              
          },
          error: function(){
             toastr.error("server error");

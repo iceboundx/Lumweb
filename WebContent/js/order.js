@@ -89,7 +89,6 @@ function render(productlist)
         }
         $('#ord').append(str);
     }
-    alert("okkk");
     endLoad();
 }
 function getlist()
@@ -144,7 +143,19 @@ function loadpage()
 		toastr.warning("You have to login first! Will go to the login page in 2s...");
         jump("login.html",2200);
         return;
-	}
+    }
+    $.ajax({
+        type: "GET",
+        url: "user.do/",
+        dataType: "json",
+        success: function(result){  
+            $('#username').html(result.nickname);    
+            $('#uid').html("TEL: "+result.uid);    
+         },
+         error: function(){
+            toastr.error("server error");
+         }
+     });
     var page=GetQueryString("page");
     if(page=="")page=1;
     nowpage=page;

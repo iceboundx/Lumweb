@@ -159,13 +159,25 @@ public class ManagerServlet extends HttpServlet {
 	        upload.setSizeMax(20*1024*1024);
 	        upload.setFileSizeMax(20*1024*1024);
 	        upload.setHeaderEncoding("UTF-8");
+	        String tname="noname",pid="";
 	        try {
 	            List<FileItem> itemList=upload.parseRequest(request);
 	            for(FileItem item:itemList){
 	                if(item.isFormField()){
 	                    String name=item.getFieldName();
 	                    String value=item.getString("UTF-8");
+	                    if(name.equals("type")) {
+	                    	tname=value;
+	                    }
+	                    else if(name.equals("pid")) {
+	                    	pid=value;
+	                    }
 	                    System.out.println("name="+name+"  value="+value);
+	                }
+	            }
+	            for(FileItem item:itemList){
+	                if(item.isFormField()){
+	                	continue;
 	                }else{
 	                    String fileName=item.getName();
 	                    System.out.println(fileName);
@@ -173,12 +185,23 @@ public class ManagerServlet extends HttpServlet {
 	                    System.out.println(namede);
 	                    
 	                    InputStream is=item.getInputStream();
-	                    FileOutputStream fos=new FileOutputStream("d:/file/"+fileName);
+	                    FileOutputStream fos;
+	                    String webpath=request.getSession().getServletContext().getRealPath("/");
+	                    System.out.println(webpath);
+	                    if(tname.contentEquals("noname")) {
+	                    	System.out.println(tname);
+	                    	fos=new FileOutputStream(webpath+"file/"+fileName);
+	                    }
+	                    else {
+	                    	System.out.println(tname);
+	                    	fos=new FileOutputStream(webpath+"images/product/"+tname+pid+".jpg");
+	                    }
 	                    byte[] buff=new byte[1024*1024];
 	                    int len=0;
 	                    while((len=is.read(buff))>0){
 	                        fos.write(buff);
 	                    }
+
 	                    is.close();
 	                    fos.close();
 	                }
@@ -368,7 +391,8 @@ public class ManagerServlet extends HttpServlet {
 			int sta=(p-1)*num+1,ed=p*num;
 			int tot=0;
 			ArrayList<String>filelist=new ArrayList();
-			String path = "d:/file/";		//要遍历的路径
+            String webpath=request.getSession().getServletContext().getRealPath("/file/");
+			String path =webpath;		//要遍历的路径
 			File file = new File(path);		//获取其file对象
 			File[] fs = file.listFiles();	//遍历path下的文件和目录，放在File数组中
 			for(File f:fs){					//遍历File[]数组
@@ -384,7 +408,7 @@ public class ManagerServlet extends HttpServlet {
 		}
 		else if(cmd.equals("/manager.do/file/num")) {
 			ArrayList<String>filelist=new ArrayList();
-			String path = "d:/file/";		//要遍历的路径
+			String path = request.getSession().getServletContext().getRealPath("/file/");		//要遍历的路径
 			File file = new File(path);		//获取其file对象
 			File[] fs = file.listFiles();	//遍历path下的文件和目录，放在File数组中
 			response.getWriter().print(WebUtils.getRes(fs.length));

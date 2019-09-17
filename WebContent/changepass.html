@@ -23,16 +23,34 @@
         <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
         <![endif]-->
 	</head>
-	<script type="text/javascript">
+	<body>
+				<div class="loadingajax" id="loading">
+	<div class="loadingback"></div>
+	<div class="loading">
+		<p>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		  <i></i>
+		</p>
+	</div>
+	</div>
+		<script type="text/javascript">
 	toastr.options.positionClass = 'toast-center-center';
 	$(function(){
+	startLoad();
+		if(!is_login())
+		{
+			toastr.warning("You have to login first! Will go to the login page in 2s...");
+			jump("login.html",2200);
+			return;
+		}
 		changeBar();
 		loadpage();
 		}
 	);
 	</script>
-	<body>
-		
 		<!--导航条-->
 		<nav class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -82,7 +100,7 @@
 	   <div class="col-md-6 center" style="margin-top: 3%">	
 	  <img src="images/555.jpeg" style="border-radius: 100%;" class="tu">
 	    <div class="bbbb">
-		   <p><font size="+2">Username</font></p>
+		   <p><font size="+2" id="username">Username</font></p>
 		  <p><font size="+1">Hello~</font></p>
 		 
 		  </div>  
