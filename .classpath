@@ -14,7 +14,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/commons-logging-1.2/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="D:/javaproject/LumWeb/WebContent/WEB-INF/lib/commons-dbutils-1.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

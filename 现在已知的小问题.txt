@@ -1,6 +1,0 @@
-价格保留两位小数 ok
-admin加载界面 ok
-用户中心的username 
-ordercenter的TEL
-一些图片
-admin按钮的大小写

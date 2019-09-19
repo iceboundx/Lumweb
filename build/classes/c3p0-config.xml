@@ -13,6 +13,9 @@
 		<property name="minPoolSize">5</property>
 		<property name="maxPoolSize">20</property> <!-- intergalactoApp adopts a different approach to configuring statement 
 			caching -->
+		<property name="testConnectionOnCheckout">false</property>
+		<property name="idleConnectionTestPeriod">1800</property>
+		<property name="maxIdleTime">5000</property>
 		<property name="maxStatements">0</property>
 		<property name="maxStatementsPerConnection">5</property> <!-- he's important, but there's only one of him -->
 	</default-config>
@@ -28,6 +31,9 @@
 		<property name="minPoolSize">5</property>
 		<property name="maxPoolSize">20</property> <!-- intergalactoApp adopts a different approach to configuring statement 
 			caching -->
+		<property name="testConnectionOnCheckout">false</property>
+		<property name="idleConnectionTestPeriod">1800</property>
+		<property name="maxIdleTime">5000</property>
 		<property name="maxStatements">0</property>
 		<property name="maxStatementsPerConnection">5</property> <!-- he's important, but there's only one of him -->
 	</named-config>
