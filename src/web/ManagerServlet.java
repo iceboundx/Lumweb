@@ -216,7 +216,9 @@ public class ManagerServlet extends HttpServlet {
 		}
 		else if(cmd.equals("/manager.do/file/del")) {
 			String name=request.getParameter("name");
-			File file=new File("d:/file/"+name);
+            String webpath=request.getSession().getServletContext().getRealPath("/file/");
+			String path =webpath;	
+			File file=new File(path+name);
 			if (!file.exists()){
 				response.getWriter().print(WebUtils.getRes("no"));
 				return;
