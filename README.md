@@ -32,7 +32,7 @@
 
 #### step 5
 
-使用浏览器访问http://localhost:8080/LumWeb/index.html查看前台界面。
+使用浏览器访问http://localhost:8080/LumWeb/index.html 查看前台界面。
 
 访问http://localhost:8080/LumWeb/admin/login.html 查看管理员界面。
 
