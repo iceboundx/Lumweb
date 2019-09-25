@@ -102,11 +102,11 @@ function putchange(obj)
    var uid=$(obj).parent().parent().attr("id");
    if(uid==null){
         $('#modal-label').html("Add manager");
-        $('#modal-id').attr('value'," ");
+        $('#modal-id').val(" ");
         $('#modal-id').attr("disabled",false);        
-        $('#modal-name').attr('value',"");
-        $('#modal-password').attr('value',"");
-        $('#modal-per').attr('value',"");
+        $('#modal-name').val("");
+        $('#modal-password').val("");
+        $('#modal-per').val("");
         return;
    }
    $.ajax({
@@ -117,10 +117,10 @@ function putchange(obj)
         uid:uid.substr(3)
     },
     success: function(result){
-        $('#modal-id').attr('value',result.uid);
+        $('#modal-id').val(result.uid);
         $('#modal-id').attr("disabled",true);        
-        $('#modal-name').attr('value',result.name);
-        $('#modal-per').attr('value',result.permission);
+        $('#modal-name').val(result.name);
+        $('#modal-per').val(result.permission);
      },
      error: function(){
         toastr.error("server error");

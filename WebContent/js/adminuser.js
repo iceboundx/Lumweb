@@ -107,11 +107,11 @@ function putchange(obj)
    var uid=$(obj).parent().parent().attr("id");
    if(uid==null){
         $('#modal-label').html("Add user");
-        $('#modal-id').attr('value',"");
+        $('#modal-id').val("");
         $('#modal-id').attr("disabled",false);        
-        $('#modal-nick').attr('value',"");
-        $('#modal-address').attr('value',"");
-        $('#modal-birth').attr('value',"");
+        $('#modal-nick').val("");
+        $('#modal-address').val("");
+        $('#modal-birth').val("");
         $('#modal-password').val("");
         return;
    }
@@ -123,11 +123,11 @@ function putchange(obj)
         uid:uid.substr(3)
     },
     success: function(result){
-        $('#modal-id').attr('value',result.uid);
+        $('#modal-id').val(result.uid);
         $('#modal-id').attr("disabled",true);        
-        $('#modal-nick').attr('value',result.nickname);
-        $('#modal-address').attr('value',result.address);
-        $('#modal-birth').attr('value',result.birthday);
+        $('#modal-nick').val(result.nickname);
+        $('#modal-address').val(result.address);
+        $('#modal-birth').val(esult.birthday);
      },
      error: function(){
         toastr.error("server error");

@@ -117,13 +117,13 @@ function putchange(obj)
    var pid=$(obj).parent().parent().parent().attr("id");
    if(pid==null){
         $('#modal-label').html("Add Product");
-        $('#modal-id').attr('value',"");
+        $('#modal-id').val("");
         $('#modal-id').attr("disabled",false);        
-        $('#modal-name').attr('value',"");
-        $('#modal-desc').attr('value',"");
-        $('#modal-price').attr('value',"");
-        $('#modal-stock').attr('value',"");     
-        $('#modal-state').attr('value',"");    
+        $('#modal-name').val("");
+        $('#modal-desc').val("");
+        $('#modal-price').val("");
+        $('#modal-stock').val("");     
+        $('#modal-state').val("");    
         return;
    }
    $.ajax({
@@ -134,13 +134,13 @@ function putchange(obj)
         pid:pid.substr(3,pid.length)
     },
     success: function(result){
-        $('#modal-id').attr('value',result.pid);
+        $('#modal-id').val(result.pid);
         $('#modal-id').attr("disabled",true);        
-        $('#modal-name').attr('value',result.name);
-        $('#modal-desc').attr('value',result.shortdesc);
-        $('#modal-price').attr('value',result.price);
-        $('#modal-stock').attr('value',result.stock);     
-        $('#modal-state').attr('value',result.state);     
+        $('#modal-name').val(result.name);
+        $('#modal-desc').val(result.shortdesc);
+        $('#modal-price').val(result.price);
+        $('#modal-stock').val(result.stock);     
+        $('#modal-state').val(result.state);     
      },
      error: function(){
         toastr.error("server error");

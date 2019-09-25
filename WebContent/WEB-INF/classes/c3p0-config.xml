@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<c3p0-config>
+	
+	<default-config>
+		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/lumweb?&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</property>
+		<property name="user">root</property>
+		<property name="password">123456</property>
+		
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">10</property>
+		<property name="minPoolSize">5</property>
+		<property name="maxPoolSize">20</property> <!-- intergalactoApp adopts a different approach to configuring statement 
+			caching -->
+		<property name="testConnectionOnCheckout">false</property>
+		<property name="idleConnectionTestPeriod">1800</property>
+		<property name="maxIdleTime">5000</property>
+		<property name="maxStatements">0</property>
+		<property name="maxStatementsPerConnection">5</property> <!-- he's important, but there's only one of him -->
+	</default-config>
+	
+	<named-config name="mysql">
+		<property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+		<property name="jdbcUrl">jdbc:mysql://localhost:3306/lumweb?&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</property>
+		<property name="user">root</property>
+		<property name="password">123456</property>
+		
+		<property name="acquireIncrement">5</property>
+		<property name="initialPoolSize">10</property>
+		<property name="minPoolSize">5</property>
+		<property name="maxPoolSize">20</property> <!-- intergalactoApp adopts a different approach to configuring statement 
+			caching -->
+		<property name="testConnectionOnCheckout">false</property>
+		<property name="idleConnectionTestPeriod">1800</property>
+		<property name="maxIdleTime">5000</property>
+		<property name="maxStatements">0</property>
+		<property name="maxStatementsPerConnection">5</property> <!-- he's important, but there's only one of him -->
+	</named-config>
+</c3p0-config>

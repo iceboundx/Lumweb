@@ -10,7 +10,7 @@ var pro3=['</span>',
 '						</div>',
 '  			<div class="col-md-3">',
 '				<button type="button" class="btn btn-primary we" data-toggle="modal" data-target="#myModalchange" onclick="putchange(this)">change</button>',
-'				<button type="button" class="btn btn-primary we">delete</button>',
+'				<button type="button" class="btn btn-primary we"  onclick="del(this)" >delete</button>',
 '				</div> </div>'].join("");
 function render(productlist)
 {
@@ -110,7 +110,7 @@ function putchange(obj)
         $('#modal-id').attr('value',"NO ID");       
         $('#modal-title').val("");
         $('#modal-type').val("");
-        $('#modal-news').val("");
+        $('#modal-news').text("");
         $('#modal-author').val("");
         return;
    }
@@ -175,6 +175,30 @@ function confirm()
             $("#myModalchange").modal('hide');
             loadpage();
             toastr.success("save success!");
+         },
+         error:function(){
+            toastr.error("server error");
+         }
+    });
+}
+function del(obj)
+{
+    var id=$(obj).parent().parent().attr("id");
+    $.ajax({
+        type: "POST",
+        url: "manager.do/article/del",
+        dataType: "json",
+        data:{
+            id:id.substr(3,id.length)
+        },
+        success:function(result){
+            if(result.result=="no")
+            {
+                toastr.error("Something wrong! Please check again...");
+            }
+            is_change=1;
+            loadpage();
+            toastr.success("delete success!");
          },
          error:function(){
             toastr.error("server error");

@@ -30,7 +30,7 @@ public class ProductDaoimpl implements ProductDao {
 	public ArrayList<Product> getAll(int start, int end) {
 		try {
 			QueryRunner runner = new QueryRunner(JdbcUtils.getDataSource());
-			String sql = "select * from product order by state desc limit ?,?";
+			String sql = "select * from product order by state,pid limit ?,?";
 			return (ArrayList<Product>)runner.query(sql, new BeanListHandler<Product>(Product.class), start, end-start+1);
 		} catch (Exception e) {
 			e.printStackTrace();
